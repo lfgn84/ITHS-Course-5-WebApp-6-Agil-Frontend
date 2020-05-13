@@ -4,7 +4,7 @@
 
         <p> info how to play </p>
         <ul>
-            <li>        <router-link to="/singlePlay" class="startButton" tag="button"> Single play   </router-link>   </li>
+            <router-link to="/singlePlay" class="startButton" tag="button"> Single play </router-link>
             <li>        <button class="startButton">  Enter room code  </button><input/>   </li>
             <router-link to="/about" tag="button">about</router-link>
             <li>        <button class="startButton">   Login  </button>   </li>
