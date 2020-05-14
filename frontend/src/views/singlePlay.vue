@@ -1,6 +1,6 @@
 <template>
 
-    <div id="app">
+    <div id="Math">
         <h1>Math</h1>
         <button v-on:click="getMathTables"> Show Mathtables </button>
         {{this.mathTablesList}}
@@ -19,8 +19,7 @@
         },
         methods:{
             getMathTables(){
-
-                fetch("assets/mathTables.json")
+                fetch("./assets/mathTables.json")
                     .then(response => response.json())
                     .then(data => {this.mathTablesList = data});
 
