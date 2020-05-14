@@ -1,20 +1,19 @@
 <template>
+    <div>
     {{mathTables}}
+    </div>
 </template>
 
 <script>
+    import json from '../assets/json/mathTables'
     export default {
         name: "singlePlay",
         data(){
             return{
-                mathTables:[]
+                mathTables:json
             }
-        },
-        mounted(){
-
-
         }
-    }
+}
 </script>
 
 <style scoped>
