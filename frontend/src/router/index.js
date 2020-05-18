@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -21,10 +22,12 @@ Vue.use(VueRouter)
     {
       path: '/singlePlay',
       name: 'SinglePlay',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/singlePlay')
+      component: () => import(/* webpackChunkName: "singlePlay" */ '../views/singlePlay.vue')
+    },
+    {
+      path: '/stageOne',
+      name: 'StageOne',
+      component: () => import(/* webpackChunkName: "stageOne" */ '../components/stageOne.vue')
     }
 ]
 

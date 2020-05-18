@@ -1,13 +1,14 @@
 <template>
 
-    <div id="Math">
+    <div id="singlePlay">
         <h1>Math</h1>
+        <router-link to="../components/stageOne.vue" class="playStageOne" tag="button"> Play StageOne router</router-link>
         <button v-on:click="showstageone"> Play StageOne </button>
 
         <button v-on:click="stageTwo"> Play StageTwo </button>
 
         <button v-on:click="stageThree"> Play StageThree </button>
-<stage-one v-show="showS1"></stage-one>
+
     </div>
 
 
@@ -17,7 +18,7 @@
     import stageOne from '../components/stageOne.vue'
 
     export default {
-        name: "stageOne",
+        name: "singlePlay",
         components: stageOne,
         data() {
             return {
