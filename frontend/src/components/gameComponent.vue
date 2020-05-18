@@ -81,21 +81,48 @@
 <!--        </div>-->
     <div>
         <div v-text="level"></div>
-        <ul >
-            <li v-for="index in selectedQuestionsTable1" v-bind:key="index">{{index.selectedQuestionsTable1}}</li>
+       <div id="table1">
+        <div id="1q1">{{selectedQuestionsTable1.q1}}</div>
+         <div><button>{{answersTable1.answer1.a}}</button><button>{{answersTable1.answer1.c}}</button><button>{{answersTable1.answer1.b}}</button></div>
+        <div id="1q2">{{selectedQuestionsTable1.q2}}</div>
+        <div id="1q3">{{selectedQuestionsTable1.q3}}</div>
+        <div id="1q4">{{selectedQuestionsTable1.q4}}</div>
+        <div id="1q5" >{{selectedQuestionsTable1.q5}}</div>
+        <div id="1q6">{{selectedQuestionsTable1.q6}}</div>
+        <div id="1q7">{{selectedQuestionsTable1.q7}}</div>
+        <div id="1q8">{{selectedQuestionsTable1.q8}}</div>
+        <div id="1q9">{{selectedQuestionsTable1.q9}}</div>
+        <div id="1q10">{{selectedQuestionsTable1.q10}}</div>
+        <div id="1q11">{{selectedQuestionsTable1.q11}}</div>
+        </div>
 
-        </ul>
-        <!--<div id="q2">{{selectedQuestionsTable1.q2}}</div>
-        <div id="q3">{{selectedQuestionsTable1.q3}}</div>
-        <div id="q4">{{selectedQuestionsTable1.q4}}</div>
-        <div id="q5" >{{selectedQuestionsTable1.q5}}</div>
-        <div id="q6">{{selectedQuestionsTable1.q6}}</div>
-        <div id="q7">{{selectedQuestionsTable1.q7}}</div>
-        <div id="q8">{{selectedQuestionsTable1.q8}}</div>
-        <div id="q9">{{selectedQuestionsTable1.q9}}</div>
-        <div id="q10">{{selectedQuestionsTable1.q10}}</div>
-        <div id="q11">{{selectedQuestionsTable1.q11}}</div>-->
+        <div id="table2">
+            <div id="2q1">{{selectedQuestionsTable2.q1}}</div>
+            <div id="2q2">{{selectedQuestionsTable2.q2}}</div>
+            <div id="2q3">{{selectedQuestionsTable2.q3}}</div>
+            <div id="2q4">{{selectedQuestionsTable2.q4}}</div>
+            <div id="2q5" >{{selectedQuestionsTable2.q5}}</div>
+            <div id="2q6">{{selectedQuestionsTable2.q6}}</div>
+            <div id="2q7">{{selectedQuestionsTable2.q7}}</div>
+            <div id="2q8">{{selectedQuestionsTable2.q8}}</div>
+            <div id="2q9">{{selectedQuestionsTable2.q9}}</div>
+            <div id="2q10">{{selectedQuestionsTable2.q10}}</div>
+            <div id="2q11">{{selectedQuestionsTable2.q11}}</div>
+        </div>
 
+        <div id="table3">
+            <div id="3q1">{{selectedQuestionsTable3.q1}}</div>
+            <div id="3q2">{{selectedQuestionsTable3.q2}}</div>
+            <div id="3q3">{{selectedQuestionsTable3.q3}}</div>
+            <div id="3q4">{{selectedQuestionsTable3.q4}}</div>
+            <div id="3q5" >{{selectedQuestionsTable3.q5}}</div>
+            <div id="3q6">{{selectedQuestionsTable3.q6}}</div>
+            <div id="3q7">{{selectedQuestionsTable3.q7}}</div>
+            <div id="3q8">{{selectedQuestionsTable3.q8}}</div>
+            <div id="3q9">{{selectedQuestionsTable3.q9}}</div>
+            <div id="3q10">{{selectedQuestionsTable3.q10}}</div>
+            <div id="3q11">{{selectedQuestionsTable3.q11}}</div>
+        </div>
     </div>
 
 
@@ -117,8 +144,11 @@
             mathTables: json,
             questionIndex:0,
             selectedQuestionsTable1:[],
+                answersTable1:[],
             selectedQuestionsTable2:[],
+                answersTable2:[],
             selectedQuestionsTable3:[],
+                answersTable3:[],
            // quiz: 'quiz',
             // Store current question index
            // questionIndex: 0,
@@ -147,16 +177,33 @@
             level: function(){
                 if(this.level == 1){
                     this.selectedQuestionsTable1 = this.mathTables.game.level1.table1.questions;
+                    this.answersTable1 = this.mathTables.game.level1.table1.answers;
+
                     this.selectedQuestionsTable2 = this.mathTables.game.level1.table2.questions;
+                    this.answersTable2 = this.mathTables.game.level1.table2.answers;
+
                     this.selectedQuestionsTable3 = this.mathTables.game.level1.table3.questions;
+                    this.answersTable3 = this.mathTables.game.level1.table3.answers;
+
                 }else if (this.level ==2){
                     this.selectedQuestionsTable1 = this.mathTables.game.level2.table4.questions;
+                    this.answersTable1 = this.mathTables.game.level2.table4.answers;
+
                     this.selectedQuestionsTable2 = this.mathTables.game.level2.table5.questions;
+                    this.answersTable2 = this.mathTables.game.level2.table5.answers;
+
                     this.selectedQuestionsTable3 = this.mathTables.game.level2.table6.questions;
+                    this.answersTable3 = this.mathTables.game.level2.table6.answers;
+
                 }else if(this.level == 3){
                     this.selectedQuestionsTable1 = this.mathTables.game.level3.table7.questions;
+                    this.answersTable1 = this.mathTables.game.level3.table7.answers;
+
                     this.selectedQuestionsTable2 = this.mathTables.game.level3.table8.questions;
+                    this.answersTable2 = this.mathTables.game.level3.table8.answers;
+
                     this.selectedQuestionsTable3 = this.mathTables.game.level3.table9.questions;
+                    this.answersTable3 = this.mathTables.game.level3.table9.answers
                 }
     }
 
