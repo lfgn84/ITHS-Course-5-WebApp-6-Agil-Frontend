@@ -3,11 +3,14 @@
     <div class="header">
         <h1>Single Player</h1>
     </div>
-    <div>Choose multpilication table : <input v-model="input.inputTable"/></div>
-    <div>Choose difficulty level : <input v-model="input.inputLevel"/></div>
-    <button @click="setConfig">OK</button>
-    <gameComponent :table="userTable" :level="userLevel" v-show="gameOn"></gameComponent>
+    <div>Choose difficulty level :
+        <button @click="level1">1</button>
+        <button @click="level2">2</button>
+        <button @click="level3">3</button>
+    </div>
 
+
+<game-component :level="userLevel" v-show="play"></game-component>
 </div>
 </template>
 
@@ -18,13 +21,8 @@ import gameComponent from "../components/gameComponent";
         components: {gameComponent},
         data(){
             return{
-                input:{
-                    inputTable: "",
-                    inputLevel: ""
-                },
                 userLevel: "",
-                userTable: "",
-                gameOn: false
+                play: false
 
 
 
@@ -32,17 +30,20 @@ import gameComponent from "../components/gameComponent";
             }
         },
         methods:{
-            setConfig: function(){
-                let tab = this.input.inputTable;
-                this.userTable = tab;
-                let lev = this.input.inputLevel;
-                this.userLevel = lev;
-
-                this.input.inputTable = "";
-                this.input.inputLevel = "";
-                this.gameOn = true
+            level1:function(){
+                this.userLevel = 1;
+                this.play = true;
+            },
+            level2:function(){
+            this.userLevel = 2;
+                this.play = true;
+            },
+            level3:function(){
+            this.userLevel = 3;
+                this.play = true;
             }
-        }
+            }
+
 
 }
 </script>
