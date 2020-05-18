@@ -1,0 +1,303 @@
+<template>
+
+    <div>
+        <h1>{{ this.title }}</h1>
+        <!-- index is used to check with current question index -->
+        <div v-for="(question, index) in questions" v-bind:key="index">
+            <!-- Hide all questions, show only the one with index === to current question index -->
+            <div v-show="index === questionIndex">
+                <h2>{{ question.text }}</h2>
+                <ol>
+                    <li v-for="(index,response) in questions" v-bind:key="index">
+                        <label>
+                            <!-- The radio button has three new directives -->
+                            <!-- v-bind:value sets "value" to "true" if the response is correct -->
+                            <!-- v-bind:name sets "name" to question index to group answers by question -->
+                            <!-- v-model creates binding with userResponses -->
+                            <input type="radio"
+                                   v-bind:value="response.correct"
+                                   v-bind:name="index"
+                                   v-model="userResponses[index]"> {{response.text}}
+                        </label>
+                    </li>
+                </ol>
+                <!-- The two navigation buttons -->
+                <!-- Note: prev is hidden on first question -->
+                <button v-if="questionIndex > 0" v-on:click="prev">
+                    prev
+                </button>
+                <button v-on:click="next">
+                    next
+                </button>
+            </div>
+        </div>
+        <div v-show="questionIndex === quiz.questions.length">
+            <h2>
+                Quiz finished
+            </h2>
+            <p>
+                Total score: {{ score() }} / {{ quiz.questions.length }}
+            </p>
+        </div>
+    </div>
+
+
+</template>
+
+<script>
+    export default {
+        name: "stageOne",
+
+
+
+            // Create a quiz object with a title and nine questions.
+            // A question has one or more answer, and one or more is valid.
+            data() { return {
+                title: 'Mathtable One',
+                questions: [
+                    {
+                        text: "1 x 0",
+                        responses: [
+                            {text: '1'},
+                            {text: '0', correct: true},
+                            {text: '2'},
+                        ]
+                    }, {
+                        text: "1 x 1",
+                        responses: [
+                            {text: '1', correct: true},
+                            {text: '2'},
+                            {text: '0'},
+                        ]
+                    }, {
+                        text: "1 x 2",
+                        responses: [
+                            {text: '2', correct: true},
+                            {text: '1'},
+                            {text: '0'},
+                        ]
+                    }, {
+                        text: "1 x 3",
+                        responses: [
+                            {text: '3', correct: true},
+                            {text: '2'},
+                            {text: '4'},
+                        ]
+                    }, {
+                        text: "1 x 4",
+                        responses: [
+                            {text: '4', correct: true},
+                            {text: '3'},
+                            {text: '5'},
+                        ]
+                    }, {
+                        text: "1 x 5",
+                        responses: [
+                            {text: '4'},
+                            {text: '5', correct: true},
+                            {text: '6'},
+                        ]
+                    }, {
+                        text: "1 x 6",
+                        responses: [
+                            {text: '4'},
+                            {text: '5'},
+                            {text: '6', correct: true},
+                        ]
+                    }, {
+                        text: "1 x 7",
+                        responses: [
+                            {text: '8'},
+                            {text: '6'},
+                            {text: '7', correct: true},
+                        ]
+                    }, {
+                        text: "1 x 8",
+                        responses: [
+                            {text: '8', correct: true},
+                            {text: '9'},
+                            {text: '7'},
+                        ]
+                    }, {
+                        text: "1 x 9",
+                        responses: [
+                            {text: '8'},
+                            {text: '9', correct: true},
+                            {text: '10'},
+                        ]
+                    }, {
+                        text: "2 x 0",
+                        responses: [
+                            {text: '1'},
+                            {text: '0', correct: true},
+                            {text: '2'},
+                        ]
+                    }, {
+                        text: "2 x 1",
+                        responses: [
+                            {text: '2', correct: true},
+                            {text: '1'},
+                            {text: '0'},
+                        ]
+                    }, {
+                        text: "2 x 2",
+                        responses: [
+                            {text: '4', correct: true},
+                            {text: '1'},
+                            {text: '0'},
+                        ]
+                    }, {
+                        text: "2 x 3",
+                        responses: [
+                            {text: '6', correct: true},
+                            {text: '2'},
+                            {text: '4'},
+                        ]
+                    }, {
+                        text: "2 x 4",
+                        responses: [
+                            {text: '8', correct: true},
+                            {text: '3'},
+                            {text: '5'},
+                        ]
+                    }, {
+                        text: "2 x 5",
+                        responses: [
+                            {text: '4'},
+                            {text: '10', correct: true},
+                            {text: '6'},
+                        ]
+                    }, {
+                        text: "2 x 6",
+                        responses: [
+                            {text: '4'},
+                            {text: '5'},
+                            {text: '12', correct: true},
+                        ]
+                    }, {
+                        text: "2 x 7",
+                        responses: [
+                            {text: '8'},
+                            {text: '6'},
+                            {text: '14', correct: true},
+                        ]
+                    }, {
+                        text: "2 x 8",
+                        responses: [
+                            {text: '16', correct: true},
+                            {text: '9'},
+                            {text: '7'},
+                        ]
+                    }, {
+                        text: "2 x 9",
+                        responses: [
+                            {text: '8'},
+                            {text: '18', correct: true},
+                            {text: '10'},
+                        ]
+                    }, {
+                        text: "3 x 0",
+                        responses: [
+                            {text: '1'},
+                            {text: '0', correct: true},
+                            {text: '2'},
+                        ]
+                    }, {
+                        text: "3 x 1",
+                        responses: [
+                            {text: '3', correct: true},
+                            {text: '2'},
+                            {text: '0'},
+                        ]
+                    }, {
+                        text: "3 x 2",
+                        responses: [
+                            {text: '6', correct: true},
+                            {text: '1'},
+                            {text: '0'},
+                        ]
+                    }, {
+                        text: "3 x 3",
+                        responses: [
+                            {text: '9', correct: true},
+                            {text: '2'},
+                            {text: '4'},
+                        ]
+                    }, {
+                        text: "3 x 4",
+                        responses: [
+                            {text: '12', correct: true},
+                            {text: '3'},
+                            {text: '5'},
+                        ]
+                    }, {
+                        text: "3 x 5",
+                        responses: [
+                            {text: '4'},
+                            {text: '15', correct: true},
+                            {text: '6'},
+                        ]
+                    }, {
+                        text: "3 x 6",
+                        responses: [
+                            {text: '4'},
+                            {text: '5'},
+                            {text: '18', correct: true},
+                        ]
+                    }, {
+                        text: "3 x 7",
+                        responses: [
+                            {text: '8'},
+                            {text: '6'},
+                            {text: '21', correct: true},
+                        ]
+                    }, {
+                        text: "3 x 8",
+                        responses: [
+                            {text: '24', correct: true},
+                            {text: '9'},
+                            {text: '7'},
+                        ]
+                    }, {
+                        text: "3 x 9",
+                        responses: [
+                            {text: '8'},
+                            {text: '27', correct: true},
+                            {text: '10'},
+                        ]
+                    },
+                ]
+                ,
+                quiz: 'quiz',
+                // Store current question index
+                questionIndex: 0,
+                // An array initialized with "false" values for each question
+                // It means: "did the user answered correctly to the question n?" "no".
+                userResponses: Array(this.questions.length).fill(false)
+                }
+            },
+
+                methods: {
+                // Go to next question
+                next: function () {
+                    this.questionIndex++;
+                },
+                // Go to previous question
+                prev: function () {
+                    this.questionIndex--;
+                },
+                // Return "true" count in userResponses
+                score: function () {
+                    return this.userResponses.filter(function (val) {
+                        return val
+                    }).length;
+                }
+            }
+
+        }
+
+</script>
+
+<style scoped>
+
+</style>

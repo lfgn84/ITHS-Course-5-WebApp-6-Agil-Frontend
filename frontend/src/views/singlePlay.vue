@@ -2,30 +2,36 @@
 
     <div id="Math">
         <h1>Math</h1>
-        <button v-on:click="getMathTables"> Show Mathtables </button>
-        {{this.mathTablesList}}
+        <button v-on:click="showstageone"> Play StageOne </button>
+
+        <button v-on:click="stageTwo"> Play StageTwo </button>
+
+        <button v-on:click="stageThree"> Play StageThree </button>
+<stage-one v-show="showS1"></stage-one>
     </div>
 
 
 </template>
 
 <script>
+    import stageOne from '../components/stageOne.vue'
+
     export default {
-        name: "Math",
+        name: "stageOne",
+        components: stageOne,
         data() {
             return {
-            mathTablesList: []
-            };
+                showS1: false,
+            }
         },
         methods:{
-            getMathTables(){
-                fetch("./assets/mathTables.json")
-                    .then(response => response.json())
-                    .then(data => {this.mathTablesList = data});
+            showstageone: function(){
+                this.showS1= true
+            }
 
-            },
         }
-    };
+    }
+
 </script>
 
 <style scoped>
