@@ -83,45 +83,112 @@
         <div v-text="level"></div>
        <div id="table1">
         <div id="1q1">{{selectedQuestionsTable1.q1}}</div>
-         <div><button>{{answersTable1.answer1.a}}</button><button>{{answersTable1.answer1.c}}</button><button>{{answersTable1.answer1.b}}</button></div>
-        <div id="1q2">{{selectedQuestionsTable1.q2}}</div>
-        <div id="1q3">{{selectedQuestionsTable1.q3}}</div>
-        <div id="1q4">{{selectedQuestionsTable1.q4}}</div>
-        <div id="1q5" >{{selectedQuestionsTable1.q5}}</div>
-        <div id="1q6">{{selectedQuestionsTable1.q6}}</div>
-        <div id="1q7">{{selectedQuestionsTable1.q7}}</div>
-        <div id="1q8">{{selectedQuestionsTable1.q8}}</div>
-        <div id="1q9">{{selectedQuestionsTable1.q9}}</div>
-        <div id="1q10">{{selectedQuestionsTable1.q10}}</div>
-        <div id="1q11">{{selectedQuestionsTable1.q11}}</div>
-        </div>
+         <div><button @click="rightAnswer" v-bind:class="{green : isActive1}" >{{answersTable1.answer1.a}}</button><button>{{answersTable1.answer1.c}}</button><button>{{answersTable1.answer1.b}}</button></div>
+
+       <div id="1q2">{{selectedQuestionsTable1.q2}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive2}">{{answersTable1.answer2.a}}</button><button>{{answersTable1.answer2.c}}</button><button>{{answersTable1.answer2.b}}</button></div>
+
+       <div id="1q3">{{selectedQuestionsTable1.q3}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive3}">{{answersTable1.answer3.a}}</button><button>{{answersTable1.answer3.c}}</button><button>{{answersTable1.answer3.b}}</button></div>
+
+       <div id="1q4">{{selectedQuestionsTable1.q4}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive4}">{{answersTable1.answer4.a}}</button><button>{{answersTable1.answer4.c}}</button><button>{{answersTable1.answer4.b}}</button></div>
+
+           <div id="1q5" >{{selectedQuestionsTable1.q5}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive5}">{{answersTable1.answer5.a}}</button><button>{{answersTable1.answer5.c}}</button><button>{{answersTable1.answer5.b}}</button></div>
+
+           <div id="1q6">{{selectedQuestionsTable1.q6}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive6}">{{answersTable1.answer6.a}}</button><button>{{answersTable1.answer6.c}}</button><button>{{answersTable1.answer6.b}}</button></div>
+
+           <div id="1q7">{{selectedQuestionsTable1.q7}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive7}">{{answersTable1.answer7.a}}</button><button>{{answersTable1.answer7.c}}</button><button>{{answersTable1.answer7.b}}</button></div>
+
+           <div id="1q8">{{selectedQuestionsTable1.q8}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive8}">{{answersTable1.answer8.a}}</button><button>{{answersTable1.answer8.c}}</button><button>{{answersTable1.answer8.b}}</button></div>
+
+           <div id="1q9">{{selectedQuestionsTable1.q9}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive9}">{{answersTable1.answer9.a}}</button><button>{{answersTable1.answer9.c}}</button><button>{{answersTable1.answer9.b}}</button></div>
+
+
+           <div id="1q10">{{selectedQuestionsTable1.q10}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive10}">{{answersTable1.answer10.a}}</button><button>{{answersTable1.answer10.c}}</button><button>{{answersTable1.answer10.b}}</button></div>
+
+           <div id="1q11">{{selectedQuestionsTable1.q11}}</div>
+           <div><button @click="rightAnswer" v-bind:class="{green : isActive11}">{{answersTable1.answer11.a}}</button><button>{{answersTable1.answer11.c}}</button><button>{{answersTable1.answer11.b}}</button></div>
+
+       </div>
 
         <div id="table2">
             <div id="2q1">{{selectedQuestionsTable2.q1}}</div>
+            <div><button>{{answersTable2.answer1.a}}</button><button>{{answersTable2.answer1.c}}</button><button>{{answersTable2.answer1.b}}</button></div>
+
             <div id="2q2">{{selectedQuestionsTable2.q2}}</div>
+            <div><button>{{answersTable2.answer2.a}}</button><button>{{answersTable2.answer2.c}}</button><button>{{answersTable2.answer2.b}}</button></div>
+
             <div id="2q3">{{selectedQuestionsTable2.q3}}</div>
+            <div><button>{{answersTable2.answer3.a}}</button><button>{{answersTable2.answer3.c}}</button><button>{{answersTable2.answer3.b}}</button></div>
+
             <div id="2q4">{{selectedQuestionsTable2.q4}}</div>
+            <div><button>{{answersTable2.answer4.a}}</button><button>{{answersTable2.answer4.c}}</button><button>{{answersTable2.answer4.b}}</button></div>
+
             <div id="2q5" >{{selectedQuestionsTable2.q5}}</div>
+            <div><button>{{answersTable2.answer5.a}}</button><button>{{answersTable2.answer5.c}}</button><button>{{answersTable2.answer5.b}}</button></div>
+
             <div id="2q6">{{selectedQuestionsTable2.q6}}</div>
+            <div><button>{{answersTable2.answer6.a}}</button><button>{{answersTable2.answer6.c}}</button><button>{{answersTable2.answer6.b}}</button></div>
+
             <div id="2q7">{{selectedQuestionsTable2.q7}}</div>
+            <div><button>{{answersTable2.answer7.a}}</button><button>{{answersTable2.answer7.c}}</button><button>{{answersTable2.answer7.b}}</button></div>
+
             <div id="2q8">{{selectedQuestionsTable2.q8}}</div>
+            <div><button>{{answersTable2.answer8.a}}</button><button>{{answersTable2.answer8.c}}</button><button>{{answersTable2.answer8.b}}</button></div>
+
             <div id="2q9">{{selectedQuestionsTable2.q9}}</div>
+            <div><button>{{answersTable2.answer9.a}}</button><button>{{answersTable2.answer9.c}}</button><button>{{answersTable2.answer9.b}}</button></div>
+
             <div id="2q10">{{selectedQuestionsTable2.q10}}</div>
+            <div><button>{{answersTable2.answer10.a}}</button><button>{{answersTable2.answer10.c}}</button><button>{{answersTable2.answer10.b}}</button></div>
+
             <div id="2q11">{{selectedQuestionsTable2.q11}}</div>
+            <div><button>{{answersTable2.answer11.a}}</button><button>{{answersTable2.answer11.c}}</button><button>{{answersTable2.answer11.b}}</button></div>
+
         </div>
 
         <div id="table3">
             <div id="3q1">{{selectedQuestionsTable3.q1}}</div>
+            <div><button>{{answersTable3.answer1.a}}</button><button>{{answersTable3.answer1.c}}</button><button>{{answersTable3.answer1.b}}</button></div>
+
             <div id="3q2">{{selectedQuestionsTable3.q2}}</div>
+            <div><button>{{answersTable3.answer2.a}}</button><button>{{answersTable3.answer2.c}}</button><button>{{answersTable3.answer2.b}}</button></div>
+
             <div id="3q3">{{selectedQuestionsTable3.q3}}</div>
+            <div><button>{{answersTable3.answer3.a}}</button><button>{{answersTable3.answer3.c}}</button><button>{{answersTable3.answer3.b}}</button></div>
+
             <div id="3q4">{{selectedQuestionsTable3.q4}}</div>
+            <div><button>{{answersTable3.answer4.a}}</button><button>{{answersTable3.answer4.c}}</button><button>{{answersTable3.answer4.b}}</button></div>
+
             <div id="3q5" >{{selectedQuestionsTable3.q5}}</div>
+            <div><button>{{answersTable3.answer5.a}}</button><button>{{answersTable3.answer5.c}}</button><button>{{answersTable3.answer5.b}}</button></div>
+
             <div id="3q6">{{selectedQuestionsTable3.q6}}</div>
+            <div><button>{{answersTable3.answer6.a}}</button><button>{{answersTable3.answer6.c}}</button><button>{{answersTable3.answer6.b}}</button></div>
+
             <div id="3q7">{{selectedQuestionsTable3.q7}}</div>
+            <div><button>{{answersTable3.answer7.a}}</button><button>{{answersTable3.answer7.c}}</button><button>{{answersTable3.answer7.b}}</button></div>
+
             <div id="3q8">{{selectedQuestionsTable3.q8}}</div>
+            <div><button>{{answersTable3.answer8.a}}</button><button>{{answersTable3.answer8.c}}</button><button>{{answersTable3.answer8.b}}</button></div>
+
+
             <div id="3q9">{{selectedQuestionsTable3.q9}}</div>
+            <div><button>{{answersTable3.answer9.a}}</button><button>{{answersTable3.answer9.c}}</button><button>{{answersTable3.answer9.b}}</button></div>
+
             <div id="3q10">{{selectedQuestionsTable3.q10}}</div>
+            <div><button>{{answersTable3.answer10.a}}</button><button>{{answersTable3.answer10.c}}</button><button>{{answersTable3.answer10.b}}</button></div>
+
             <div id="3q11">{{selectedQuestionsTable3.q11}}</div>
+            <div><button>{{answersTable3.answer11.a}}</button><button>{{answersTable3.answer11.c}}</button><button>{{answersTable3.answer11.b}}</button></div>
+
         </div>
     </div>
 
@@ -149,6 +216,44 @@
                 answersTable2:[],
             selectedQuestionsTable3:[],
                 answersTable3:[],
+
+                active:{
+                    isActive1: false,
+                    isActive2: false,
+                    isActive3: false,
+                    isActive4: false,
+                    isActive5: false,
+                    isActive6: false,
+                    isActive7: false,
+                    isActive8: false,
+                    isActive9: false,
+                    isActive10: false,
+                    isActive11: false,
+                    isActive12: false,
+                    isActive13: false,
+                    isActive14: false,
+                    isActive15: false,
+                    isActive16: false,
+                    isActive17: false,
+                    isActive18: false,
+                    isActive19: false,
+                    isActive20: false,
+                    isActive21: false,
+                    isActive22: false,
+                    isActive23: false,
+                    isActive24: false,
+                    isActive25: false,
+                    isActive26: false,
+                    isActive27: false,
+                    isActive28: false,
+                    isActive29: false,
+                    isActive30: false,
+                    isActive31: false,
+                    isActive32: false,
+                    isActive33: false,
+
+                }
+
            // quiz: 'quiz',
             // Store current question index
            // questionIndex: 0,
@@ -157,21 +262,110 @@
            // userResponses: Array(this.mathTables.game.level1.table1.questions.length).fill(false)
         }
     },
-        methods: {
-    /*        // Go to next question
-            next: function () {
-                this.questionIndex++;
+
+        methods:{
+            rightAnswer1: function(){
+                    this.isActive1 = true
             },
-            // Go to previous question
-            prev: function () {
-                this.questionIndex--;
+            rightAnswer2: function(){
+                this.isActive2 = true
             },
-            // Return "true" count in userResponses
-            score: function () {
-                return this.userResponses.filter(function (val) {
-                    return val
-                }).length;
-            }*/
+            rightAnswer3: function(){
+                this.isActive3 = true
+            },
+            rightAnswer4: function(){
+                this.isActive4 = true
+            },
+            rightAnswer5: function(){
+                this.isActive5 = true
+            },
+            rightAnswer6: function(){
+                this.isActive6 = true
+            },
+            rightAnswer7: function(){
+                this.isActive7 = true
+            },
+            rightAnswer8: function(){
+                this.isActive8 = true
+            },
+            rightAnswer9: function(){
+                this.isActive9 = true
+            },
+            rightAnswer10: function(){
+                this.isActive10 = true
+            },
+            rightAnswer11: function(){
+                this.isActive11 = true
+            },
+            rightAnswer12: function(){
+                this.isActive12 = true
+            },
+            rightAnswer13: function(){
+                this.isActive13 = true
+            },
+            rightAnswer14: function(){
+                this.isActive14 = true
+            },
+            rightAnswer15: function(){
+                this.isActive15 = true
+            },
+            rightAnswer16: function(){
+                this.isActive16 = true
+            },
+            rightAnswer17: function(){
+                this.isActive17 = true
+            },
+            rightAnswer18: function(){
+                this.isActive18 = true
+            },
+            rightAnswer19: function(){
+                this.isActive19 = true
+            },
+            rightAnswer20: function(){
+                this.isActive20 = true
+            },
+            rightAnswer21: function(){
+                this.isActive21 = true
+            },
+            rightAnswer22: function(){
+                this.isActive22 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
+            rightAnswer1: function(){
+                this.isActive1 = true
+            },
         },
         watch:{
             level: function(){
@@ -212,6 +406,11 @@
 </script>
 
 <style scoped>
+    .green
+    {
+        border: 1px solid yellow;
+        background-color: green;
+    }
 </style>
 
 
