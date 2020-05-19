@@ -6,7 +6,7 @@
         <ul>
             <li>        <router-link to="/singlePlay" class="startButton" tag="button"> Single play   </router-link>   </li>
             <li>        <button class="startButton">  Enter room code  </button><input/>   </li>
-            <router-link to="/about" tag="button">about</router-link>
+<!--            <router-link to="/about" tag="button">about</router-link>-->
             <li>        <button class="startButton">   Login  </button>   </li>
         </ul>
 
