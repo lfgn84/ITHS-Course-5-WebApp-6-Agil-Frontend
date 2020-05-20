@@ -48,11 +48,12 @@
 <!--                    <div id="question" >{{mathTables.questions[generatedQuestions[0]].text}}</div>-->
                                <!-- //chosenQuestion=   nummervärde mellan 0-9
                     mathtable.questions[chosenQuestion].text-->
-                    <div id="question">{{mathTables.questions[generatedQuestions[choosenQuestion]].text}}</div>
-                    <button v-bind:class="{green : correct }">{{mathTables.questions[generatedQuestions[choosenQuestion]].responses[0].text}}</button>
+                    <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>
+                    <button id="0" v-bind:class="{green : correct0 , red : wrong0 }"  @click="isCorrect($event)">{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].text}}</button>
 
-                    <button>{{mathTables.questions[generatedQuestions[choosenQuestion]].responses[1].text}}</button>
-                    <button>{{mathTables.questions[generatedQuestions[choosenQuestion]].responses[2].text}}</button>
+                    <button id="1" v-bind:class="{green : correct1 , red : wrong1 }"  @click="isCorrect($event)">{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].text}}</button>
+                    <button id="2" v-bind:class="{green : correct2 , red : wrong2 }"  @click="isCorrect($event)">{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].text}}</button>
+                    <button v-show="nextQ" @click="nextQuestion">NEXT QUESTION</button>
 
                 </div>
     </div>
@@ -80,8 +81,15 @@
                     16, 2, 15,28,4,30
                 ],
                 //chosenquestion kommer att ¨ka med ++ f¨r att hämta värdet i generatedquestionarrayen
-                choosenQuestion: 0,
-               correct: true
+                chosenQuestion: 0,
+                correct: false,
+                correct0: false,
+                wrong0: false,
+                correct1: false,
+                wrong1:false,
+                correct2: false,
+                wrong2: false,
+                nextQ: false,
 
                // correct: true
 
@@ -100,11 +108,68 @@
         ,
 
         methods: {
-            nextQuestion: function () {
+            isCorrect: function (event) {
+                var targetId = event.currentTarget.id;
+                console.log("clicked option :" + targetId);
+                this.correct = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[targetId].correct;
+                console.log(this.correct);
+// kör våran compare answers method
+                if(this.correct == true){
+                    if(targetId == 0){
+                        this.correct0 = true;
+                        this.wrong0 = false;
 
+                        this.correct1 = false;
+                        this.wrong1 = true;
+
+                        this.correct2 = false;
+                        this.wrong2 = true;
+                    }else if(targetId == 1){
+                        this.correct0 = false;
+                        this.wrong0 = true;
+
+                        this.correct1 = true;
+                        this.wrong1 = false;
+
+                        this.correct2 = false;
+                        this.wrong2 = true;
+                    } else if(targetId == 2){
+                        this.correct0 =false;
+                        this.wrong0 = true;
+
+                        this.correct1 = false;
+                        this.wrong1 = true;
+
+                        this.correct2 = true;
+                        this.wrong2 = false;
+                    }
+                } else if (this.correct == false){
+                    this.correct0 = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[0].correct;
+                    this.wrong0 = !this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[0].correct;
+
+                    this.correct1 = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[1].correct;
+                    this.wrong1 = !this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[1].correct;
+
+                    this.correct2 = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[2].correct;
+                    this.wrong2 = !this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[2].correct;
+
+
+                }
+                this.nextQ = true;
+                        },
+            nextQuestion: function(){
+                this.correct = false
+                this.correct0 = false
+                this.wrong0 = false
+                this.correct1 = false
+                this.wrong1 = false
+                this.correct2 = false
+                this.wrong2 = false
+                this.nextQ = false
+                this.chosenQuestion ++
             }
+                 }
 
-        },
 
             /* level: function() {
                 if (this.level == 1) {
@@ -149,6 +214,10 @@
     {
         border: 1px solid yellow;
         background-color: green;
+    }
+    .red{
+        border: 1px solid red;
+        background-color: hotpink;
     }
 </style>
 
