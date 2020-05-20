@@ -10,13 +10,14 @@
                 <p>Hej, välj nivå och döp rummet.</p>
                 <!-- infotext -->
                 <!-- välj level och spara i variabel för att kunna skicka-->
-                <button @click="selectLevel(1)">1</button>
-                <button @click="selectLevel(2)">2</button>
-                <button @click="selectLevel(3)">3</button>
-                <input type="text">
+                <button @click="selectLevel(1)" v-bind:class="{green : correct0}"> 1 </button>
+                <button @click="selectLevel(2)" v-bind:class="{green : correct1}"> 2 </button>
+                <button @click="selectLevel(3)" v-bind:class="{green : correct2}"> 3 </button>
+                <input  type="text" v-model="info.room" placeholder="enter room code">
                 <!--döp rum inga mellanslag! spara för att kunna skicka-->
                 <!-- submit-knapp som skickar till databasen-->
                 <button @click="sendInfo">skapa rum!</button>
+                <p>{{responseText}}</p>
             </div>
         </div>
     </div>
@@ -35,24 +36,60 @@
         data(){
             return{
                 info:{
-                    room: "Luis-room",
+                    room: "",
                     gamecode: "12, 13, 14"
-                }
+                },
+                correct0: null,
+                correct1: null,
+                correct2: null,
+                responseText: "innan knapptryck"
             }
         },
         methods: {
-            selectLevel: function(){
-                /* beroende på vilken level : generera gameCode? */
-                this.info.gamecode = [12, 13, 4, 1]
-            },
-            nameRoom: function(){
-                /* sätt roomName-variabel */
-                this.info.room= "hajen"
+            selectLevel: function(inputz){
+                if(inputz == 1)
+                    this.correct0 = true;
+                if(inputz == 2)
+                    this.correct1 = true;
+                if(inputz == 3)
+                    this.correct2 = true;
+                var level = inputz;
+                var gameCodeText= "";
+                var gameCodeArray = [9999];
+                var numberOfQuestions = 30;
+                var i = 0;
+                while (i < numberOfQuestions) {                                  // 10 = antalet frågor som skall spelas
+                    var x = 0;
+                    switch(level) {
+                        case 1:
+                            x =  Math.floor((Math.random() * 30) + 1);
+                            break;
+                        case 2:
+                            x =  Math.floor((Math.random() * 30) + 31);
+                            break;
+                        case 3:
+                            x =  Math.floor((Math.random() * 39) + 61);
+                            break;
+                    }
+                    if (!gameCodeArray.includes(x)) {
+                        if (gameCodeArray[0] == 9999) {
+                            gameCodeArray.shift()
+                        }
+                        gameCodeArray.push(x)
+                        i++;
+                    }
+                }
+                for (const element of gameCodeArray) {
+                    gameCodeText = gameCodeText + "," + element;
+                }
+                console.log(gameCodeText);
+                this.info.gamecode = gameCodeText;
             },
             sendInfo: function(){
                 console.log(this.info + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 var room = this.info.room;
                 var gamecode = this.info.gamecode;
+                this.responseText = "Success";
                 fetch('https://fierce-mountain-27289.herokuapp.com/v1/creategame',{
                     method: 'POST',
                     headers: {
@@ -74,12 +111,21 @@
     }
 </script>
 <style>
-    .header {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        width: 800px;
+    .green
+    {
+        background-color: green;
+    }
+    button{
+        border-radius: 50px ;
+        height: 100px ;
+        width: 100px ;
+        background-color: #93D2FA;
+        border-bottom-color: #1C75AD ;
+        border-bottom-width:5px ;
+        border-right-width: 5px;
+        border-right-color: #1C75AD ;
+        font-family: 'Luckiest Guy', Tahoma;
+        color: darkblue;
+        font-size: 3em ;
     }
 </style>
