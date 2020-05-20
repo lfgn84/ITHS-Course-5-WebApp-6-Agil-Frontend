@@ -1,22 +1,50 @@
 <template>
-
+<div>
     <div class="header">
         <h1>Single Player</h1>
-
-    {{mathTables}}
-
     </div>
+    <div>Choose difficulty level :
+        <button @click="level1">1</button>
+        <button @click="level2">2</button>
+        <button @click="level3">3</button>
+    </div>
+
+
+<game-component :level="userLevel" v-show="play"></game-component>
+</div>
 </template>
 
 <script>
-    import json from '../assets/json/mathTables'
+import gameComponent from "../components/gameComponent";
     export default {
         name: "singlePlay",
+        components: {gameComponent},
         data(){
             return{
-                mathTables:json
+                userLevel: "",
+                play: false
+
+
+
+
             }
-        }
+        },
+        methods:{
+            level1:function(){
+                this.userLevel = 1;
+                this.play = true;
+            },
+            level2:function(){
+            this.userLevel = 2;
+                this.play = true;
+            },
+            level3:function(){
+            this.userLevel = 3;
+                this.play = true;
+            }
+            }
+
+
 }
 </script>
 
@@ -26,7 +54,6 @@
 
     .header {
         font-family: 'Luckiest Guy', Tahoma,serif;
-        position: fixed;
         width: 100%;
         color: #f8fff9;
         text-align: center;
