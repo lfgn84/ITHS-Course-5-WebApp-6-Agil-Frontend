@@ -97,7 +97,7 @@
 
 
                 }
-                this.nextQ = true; // visar "nextQuestion" knapp så man ta sig till nästa fråga
+                this.nextQ = true; // Gör att "nextQuestion" knapp visas så man kan ta sig till nästa fråga
                         },
             nextQuestion: function(){
                 this.correct = false
@@ -105,7 +105,7 @@
                 this.wrong0 = false
                 this.correct1 = false
                 this.wrong1 = false
-                this.correct2 = false       // reset alla värde i data så man kan köra en ny fråga
+                this.correct2 = false       // reset alla värde i data() så man kan köra en ny fråga
                 this.wrong2 = false
                 this.nextQ = false
                 this.chosenQuestion ++ // vi går upp en index plats i "generatedQuestions"
