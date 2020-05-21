@@ -3,17 +3,31 @@
 
     <div>
         <div v-text="level"></div>
-                <div>
+        <div>
 
-                    <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>    <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
-                    <button id="0" v-bind:class="{green : correct0 , red : wrong0 }"  @click="isCorrect($event)">{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].text}}</button>
-            <!--[3 möjliga svar alternativ från varje utvald fråga som har samma index som frågan. @click=isCorrect($event) skickar "ID" för den knappen man trycker som en del av "click-eventet" ]-->
-                    <button id="1" v-bind:class="{green : correct1 , red : wrong1 }"  @click="isCorrect($event)">{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].text}}</button>
-            <!--["green" css class aktivieras när svaret är korrect. om svaret är fel så är "red" class som aktivieras i knappen istället. ]-->
-                    <button id="2" v-bind:class="{green : correct2 , red : wrong2 }"  @click="isCorrect($event)">{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].text}}</button>
-                    <button v-show="nextQ" @click="nextQuestion">NEXT QUESTION</button> <!--[next question button visas när "nextQ" värde är "true". Denna knappen gör "reset" på alla våran värde i data som hjälper oss att dela rätta svar från fel]-->
+            <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>    <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
 
-                </div>
+            <button id="0" @click="clickAnswer()"
+                    v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct,
+                                   'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct}"
+                    >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].text}}
+            </button>
+
+            <button id="1" @click="clickAnswer()"
+                    v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct,
+                                   'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct}"
+                    >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].text}}
+            </button>
+
+            <button id="2" @click="clickAnswer()"
+                    v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct,
+                                   'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct}"
+                    >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].text}}
+            </button>
+
+            <button v-show="nextQ" @click="nextQuestion">NEXT QUESTION</button> <!--[next question button visas när "nextQ" värde är "true". Denna knappen gör "reset" på alla våran värde i data som hjälper oss att dela rätta svar från fel]-->
+
+        </div>
     </div>
 
 
@@ -37,84 +51,22 @@
                     16, 2, 15,28,4,20      // generated random questions
                 ],
                 chosenQuestion: 0, // index in our generated questions
-                correct: false, // värde som visar om svaret i knappen vi har tryct är rätt eller fel.
-                correct0: false, //värde som visar "true" om "option 0" från våran svar alternativ är den rätta svar.
-                wrong0: false, //värde som visar "true" om "option 0" från våran svar alternativ är INTE den rätta svar.
-                correct1: false, //värde som visar "true" om "option 1" från våran svar alternativ är den rätta svar.
-                wrong1:false, //värde som visar "true" om "option 1" från våran svar alternativ är INTE den rätta svar.
-                correct2: false, //värde som visar "true" om "option 2" från våran svar alternativ är INTE den rätta svar.
-                wrong2: false, //värde som visar "true" om "option 2" från våran svar alternativ är INTE den rätta svar.
                 nextQ: false, //värde som visar "true" om vi är redo till nästa fråga.
-
+                clicked: false
             }
         },
 
         methods: {
-            isCorrect: function (event) {
-                var targetId = event.currentTarget.id;  // här hämtar vi vilken är ID för den tryckta svar knappen.
-                console.log("clicked option :" + targetId);
-                this.correct = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[targetId].correct; // här lagras vi värde (false eller true) för den svar alternativ man har tryckt på (.responses[targetId].correct).
-                console.log(this.correct);
-// kör våran compare answers method
-                if(this.correct == true){
-                    if(targetId == 0){
-                        this.correct0 = true;
-                        this.wrong0 = false;
-
-                        this.correct1 = false;          // om valt svar är "true" && valt svar alternativ är 0
-                        this.wrong1 = true;
-
-                        this.correct2 = false;
-                        this.wrong2 = true;
-                    }else if(targetId == 1){
-                        this.correct0 = false;
-                        this.wrong0 = true;
-
-                        this.correct1 = true;
-                        this.wrong1 = false;   // om valt svar är "true" && valt svar alternativ är 1
-
-                        this.correct2 = false;
-                        this.wrong2 = true;
-                    } else if(targetId == 2){
-                        this.correct0 =false;
-                        this.wrong0 = true;
-
-                        this.correct1 = false;
-                        this.wrong1 = true;         // om valt svar är "true" && valt svar alternativ är 2
-
-                        this.correct2 = true;
-                        this.wrong2 = false;
-                    }
-                } else if (this.correct == false){
-                    this.correct0 = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[0].correct;
-                    this.wrong0 = !this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[0].correct;
-
-                    this.correct1 = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[1].correct;
-                    this.wrong1 = !this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[1].correct;  // Om vi har valt fel svar
-
-                    this.correct2 = this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[2].correct;
-                    this.wrong2 = !this.mathTables.questions[this.generatedQuestions[this.chosenQuestion]].responses[2].correct;
-
-
-                }
-                this.nextQ = true; // Gör att "nextQuestion" knapp visas så man kan ta sig till nästa fråga
-                        },
             nextQuestion: function(){
-                this.correct = false
-                this.correct0 = false
-                this.wrong0 = false
-                this.correct1 = false
-                this.wrong1 = false
-                this.correct2 = false       // reset alla värde i data() så man kan köra en ny fråga
-                this.wrong2 = false
-                this.nextQ = false
                 this.chosenQuestion ++ // vi går upp en index plats i "generatedQuestions"
+                this.clicked = false
+            },
+
+            clickAnswer: function(){
+                this.clicked = true;
+                this.nextQ = true;
             }
-                 }
-
-
-
-
+        }
     }
 </script>
 
