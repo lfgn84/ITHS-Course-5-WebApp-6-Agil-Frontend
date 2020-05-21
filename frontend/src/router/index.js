@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import singlePlay from "../views/singlePlay";
 import createRoom from "../views/createRoom";
+import logIn from "../views/logIn";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ Vue.use(VueRouter)
       path:'/createRoom',
       name:'createRoom',
       component: createRoom
+    },
+    {
+      path:'/logIn',
+      name:'logIn',
+      component: logIn
     }
 ]
 
