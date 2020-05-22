@@ -7,12 +7,17 @@
             <!-- välj level, döp rum, skicka till databas. -->
             <footerComponent></footerComponent>
             <div>
-                <p>Choose a level of difficulty and name your room. Please make sure your room name does not contain spaces.</p>
+                <p>Choose a level of difficulty, number of questions and name your room. Please make sure your room name does not contain spaces.</p>
                 <!-- infotext -->
+
+               <button @click="selectNumberOfQuestions(5)">5</button>
+                <button @click="selectNumberOfQuestions(10)">10</button>
+                <button @click="selectNumberOfQuestions(15)">15</button>
+
                 <!-- välj level och spara i variabel för att kunna skicka-->
-                <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> 1 </button>
-                <button @click="selectLevel(2)" v-bind:class="{green : selected1}"> 2 </button>
-                <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> 3 </button>
+                <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> Easy </button>
+                <button @click="selectLevel(2)" v-bind:class="{green : selected1}"> Medium </button>
+                <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> Hard </button>
                 <input  type="text" v-model="info.room" placeholder="enter room code">
                 <!--döp rum inga mellanslag! spara för att kunna skicka-->
                 <!-- submit-knapp som skickar till databasen-->
@@ -42,11 +47,16 @@
                 selected0: false,
                 selected1: false,
                 selected2: false,
-                responseText: ""
+                responseText: "",
+                selectedNumberOfQuestions: 10,
+                active: false
             }
         },
         methods: {
             selectLevel: function(inputz){
+                if(this.active == false){
+                    this.responseText = "Please select how many questions you want."
+                }
                 if(inputz === 1){
                     this.selected0 = true;
                     this.selected1 = false;
@@ -66,7 +76,7 @@
                 var level = inputz;
                 var gameCodeText= "";
                 var gameCodeArray = [9999];
-                var numberOfQuestions = 30;
+                var numberOfQuestions = this.selectedNumberOfQuestions;
                 var i = 0;
                 while (i < numberOfQuestions) {                                  // 10 = antalet frågor som skall spelas
                     var x = 0;
@@ -140,7 +150,11 @@
                     });
                 console.log( JSON.stringify({"room":room, "gamecode":gamecode}))
                 }
-                }
+                },
+            selectNumberOfQuestions: function(n){
+                this.active = true;
+                this.selectedNumberOfQuestions = n;
+            }
 
         }
     }
