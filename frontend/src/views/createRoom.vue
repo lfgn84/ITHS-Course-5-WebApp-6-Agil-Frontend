@@ -7,16 +7,16 @@
             <!-- välj level, döp rum, skicka till databas. -->
             <footerComponent></footerComponent>
             <div>
-                <p>Hej, välj nivå och döp rummet.</p>
+                <p>Choose a level of difficulty and name your room. Please make sure your room name does not contain spaces.</p>
                 <!-- infotext -->
                 <!-- välj level och spara i variabel för att kunna skicka-->
-                <button @click="selectLevel(1)" v-bind:class="{green : correct0}"> 1 </button>
-                <button @click="selectLevel(2)" v-bind:class="{green : correct1}"> 2 </button>
-                <button @click="selectLevel(3)" v-bind:class="{green : correct2}"> 3 </button>
+                <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> 1 </button>
+                <button @click="selectLevel(2)" v-bind:class="{green : selected1}"> 2 </button>
+                <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> 3 </button>
                 <input  type="text" v-model="info.room" placeholder="enter room code">
                 <!--döp rum inga mellanslag! spara för att kunna skicka-->
                 <!-- submit-knapp som skickar till databasen-->
-                <button @click="sendInfo">skapa rum!</button>
+                <button @click="sendInfo">create room!</button>
                 <p>{{responseText}}</p>
             </div>
         </div>
@@ -39,20 +39,30 @@
                     room: "",
                     gamecode: "12, 13, 14"
                 },
-                correct0: null,
-                correct1: null,
-                correct2: null,
-                responseText: "innan knapptryck"
+                selected0: false,
+                selected1: false,
+                selected2: false,
+                responseText: ""
             }
         },
         methods: {
             selectLevel: function(inputz){
-                if(inputz == 1)
-                    this.correct0 = true;
-                if(inputz == 2)
-                    this.correct1 = true;
-                if(inputz == 3)
-                    this.correct2 = true;
+                if(inputz === 1){
+                    this.selected0 = true;
+                    this.selected1 = false;
+                    this.selected2 = false;
+                }
+                if(inputz === 2){
+                    this.selected1 = true;
+                    this.selected0 = false;
+                    this.selected2 = false;
+                }
+                if(inputz === 3){
+                    this.selected2 = true;
+                    this.selected0 = false;
+                    this.selected1 = false;
+                }
+
                 var level = inputz;
                 var gameCodeText= "";
                 var gameCodeArray = [9999];
@@ -89,7 +99,12 @@
                 console.log(this.info + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 var room = this.info.room;
                 var gamecode = this.info.gamecode;
-                this.responseText = "Success";
+
+                /* check if roomcode contqains any whitespaces or is null*/
+                    console.log(room + " = room")
+
+                this.responseText = "Room created with name " + room + ". Everything is set to play hungry for math!" ;
+
                 fetch('https://fierce-mountain-27289.herokuapp.com/v1/creategame',{
                     method: 'POST',
                     headers: {
@@ -106,7 +121,8 @@
                         console.error('Error:', error);
                     });
                 console.log( JSON.stringify({"room":room, "gamecode":gamecode}))
-            }
+                }
+
         }
     }
 </script>
