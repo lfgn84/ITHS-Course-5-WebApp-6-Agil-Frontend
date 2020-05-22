@@ -7,9 +7,13 @@
 
             <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>    <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
 
-            <button id="0" @click="clickAnswer()"
+            <!-- metoden clickanswer sätter variabler till true som talar om att vi har klickat på ett answer och vi är redo att klicka på nextQuestion -->
+            <button id="0" @click="clickAnswer()">
+                                    <!-- svaret får class red om clicked = true && correct-värdet inte är true (alltså false) -->
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct,
+                                    <!-- svaret får class green om clicked = true && correct-värdet är true -->
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct}"
+                                    <!-- Knappens text är värdet i responses[0].text -->
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].text}}
             </button>
 
@@ -52,19 +56,20 @@
                 ],
                 chosenQuestion: 0, // index in our generated questions
                 nextQ: false, //värde som visar "true" om vi är redo till nästa fråga.
-                clicked: false
+                clicked: false //boolean som visar om vi klickat på ett av svaren
             }
         },
 
         methods: {
             nextQuestion: function(){
                 this.chosenQuestion ++ // vi går upp en index plats i "generatedQuestions"
-                this.clicked = false
+                this.clicked = false //nollställer att vi har klickat på ett av svaren när nästa fråga visas
             },
 
+            //när vi klickat på ett av svaren sätts clicked och nextQ till true
             clickAnswer: function(){
-                this.clicked = true;
-                this.nextQ = true;
+                this.clicked = true; //vi har klickat på ett av svaren
+                this.nextQ = true;  //vi kan visa nextQuestion-knappen för att gå vidare till nästa fråga
             }
         }
     }
