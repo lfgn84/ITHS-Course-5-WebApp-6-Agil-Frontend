@@ -37,7 +37,7 @@
             return{
                 info:{
                     room: "",
-                    gamecode: "12, 13, 14"
+                    gamecode: ""
                 },
                 selected0: false,
                 selected1: false,
@@ -96,12 +96,30 @@
                 this.info.gamecode = gameCodeText;
             },
             sendInfo: function(){
-                console.log(this.info + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
                 var room = this.info.room;
                 var gamecode = this.info.gamecode;
 
-                /* check if roomcode contqains any whitespaces or is null*/
-                    console.log(room + " = room")
+                /* check if roomcode contqains any whitespaces*/
+                if(/\s/.test(room)){
+                    console.log(room + " room in check whitespaces")
+                    this.responseText = "No spaces in room name please!"
+                }
+
+                /*check if room is null*/
+                else if (!room){
+                    this.responseText = "You need to name the room"
+                }
+
+                /*check if a level has been selected*/
+                else if(gamecode == ""){
+                    this.responseText = "please select level"
+                }
+
+                /*if all checks above passes, send info to database*/
+                else{
+
+                    console.log(room + " = room in else not white space")
 
                 this.responseText = "Room created with name " + room + ". Everything is set to play hungry for math!" ;
 
@@ -121,6 +139,7 @@
                         console.error('Error:', error);
                     });
                 console.log( JSON.stringify({"room":room, "gamecode":gamecode}))
+                }
                 }
 
         }
