@@ -5,15 +5,16 @@
         <div v-text="level"></div>
         <div>
 
-            <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>    <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
+            <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
+            <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>
 
             <!-- metoden clickanswer sätter variabler till true som talar om att vi har klickat på ett answer och vi är redo att klicka på nextQuestion -->
-            <button id="0" @click="clickAnswer()">
-                                    <!-- svaret får class red om clicked = true && correct-värdet inte är true (alltså false) -->
+            <!-- svaret får class red om clicked = true && correct-värdet inte är true (alltså false) -->
+            <!-- svaret får class green om clicked = true && correct-värdet är true -->
+            <!-- Knappens text är värdet i responses[0].text -->
+            <button id="0" @click="clickAnswer()"
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct,
-                                    <!-- svaret får class green om clicked = true && correct-värdet är true -->
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct}"
-                                    <!-- Knappens text är värdet i responses[0].text -->
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].text}}
             </button>
 
