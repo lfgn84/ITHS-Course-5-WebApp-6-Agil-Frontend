@@ -13,12 +13,9 @@
         name: "multiplayer",
         data() {
             return{
-                room: "annikasspel1"
+                room: "allasrum"
             }
-            },
-        created() {
-            this.room = this.$route.params.room;
-        }
+            }
     }
 </script>
 
