@@ -5,6 +5,7 @@ import singlePlay from "../views/singlePlay";
 import createRoom from "../views/createRoom";
 import logIn from "../views/logIn";
 import multiPlayer from "../views/multiPlayer";
+import multiPlay from "../views/multiPlay";
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ Vue.use(VueRouter)
       path:'/multiPlayer',
       name:'multiPlayer',
       component: multiPlayer
+    },
+    {
+      path:'/multiPlay',
+      name:'multiPlay',
+      component: multiPlay
     }
 ]
 
