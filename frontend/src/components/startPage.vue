@@ -38,7 +38,7 @@
         name: "startPage",
         data(){
             return{
-                inputRoom: "test"
+                inputRoom: ""
             }
         }
 
