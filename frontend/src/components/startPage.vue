@@ -4,10 +4,26 @@
 
         <p> info how to play </p>
         <ul>
-            <li>        <router-link to="/singlePlay" class="startButton" tag="button"> Single play   </router-link>   </li>
-            <li>        <button class="startButton">  Enter room code  </button><input/>   </li>
-<!--            <router-link to="/about" tag="button">about</router-link>-->
-                    <li>  <router-link to="/createRoom"       class="startButton"  tag="button"> Login    </router-link> </li>
+            <li>
+                <router-link
+                        to="/singlePlay" class="startButton" tag="button"> Single play
+                </router-link>
+            </li>
+
+            <li>
+
+                <!-- https://www.thepolyglotdeveloper.com/2017/11/pass-data-between-routes-vuejs-web-application/ how to pass daa between routes -->
+                <router-link
+                        :to="{name: 'multiPlayer', params: {room: inputRoom }}" class="startButton" tag="button"> Join multiplayer game
+                </router-link>
+                <input type="text" v-model="inputRoom" placeholder="Enter room name"/>
+            </li>
+
+            <li>
+                <router-link
+                        to="/logIn" class="startButton" tag="button"> Login
+                </router-link> </li>
+
         </ul>
 
 
@@ -19,7 +35,13 @@
 
 <script>
     export default {
-        name: "startPage"
+        name: "startPage",
+        data(){
+            return{
+                inputRoom: ""
+            }
+        }
+
     }
 </script>
 
