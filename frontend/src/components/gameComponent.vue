@@ -46,15 +46,14 @@
         name: "gameComponent",
         props: {
             level: Number, //Prop level, ge oss spel "level" som man väljer från "singlePlayer"
+            gamecode: Array
         },
 
         data() {
             return {
                 //title: 'Mathtable One',
                 mathTables: json,  // json file
-                generatedQuestions:[
-                    16, 2, 15,28,4,20      // generated random questions
-                ],
+                generatedQuestions: this.gamecode,
                 chosenQuestion: 0, // index in our generated questions
                 nextQ: false, //värde som visar "true" om vi är redo till nästa fråga.
                 clicked: false //boolean som visar om vi klickat på ett av svaren

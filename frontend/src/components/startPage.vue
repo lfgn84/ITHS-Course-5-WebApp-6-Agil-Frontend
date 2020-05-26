@@ -9,14 +9,12 @@
                         to="/singlePlay" class="startButton" tag="button"> Single play
                 </router-link>
             </li>
-
             <li>
 
-                <!-- https://www.thepolyglotdeveloper.com/2017/11/pass-data-between-routes-vuejs-web-application/ how to pass daa between routes -->
                 <router-link
-                        :to="{name: 'multiPlayer', params: {room: inputRoom }}" class="startButton" tag="button"> Join multiplayer game
+                        to="/multiPlayer" class="startButton" tag="button"> Join multiplayer game
                 </router-link>
-                <input type="text" v-model="inputRoom" placeholder="Enter room name"/>
+
             </li>
 
             <li>
