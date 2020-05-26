@@ -41,7 +41,7 @@
                 <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> Hard </button>
                     </li>
                     <li>
-                <input  type="text" v-model="info.room" placeholder="enter room code">
+                <input  type="text" v-model="info.room" placeholder="name your room to something">
 
                 <!--döp rum inga mellanslag! spara för att kunna skicka-->
                 <!-- submit-knapp som skickar till databasen-->
