@@ -211,6 +211,494 @@
         {"text": 27,"correct": true},
         {"text": 10, "correct": false}
       ]
+    },
+    {
+      "text": "4 x 0",
+      "responses": [
+        {"text": 4, "correct": false},
+        {"text": 0,"correct": true},
+        {"text": 2, "correct": false}
+      ]
+    },
+    {
+      "text": "4 x 1",
+      "responses": [
+        {"text": 1, "correct": false},
+        {"text": 4,"correct": true},
+        {"text": 6, "correct": false}
+      ]
+    },
+    {
+      "text": "4 x 2",
+      "responses": [
+        {"text": 4, "correct": false},
+        {"text": 0,"correct": false},
+        {"text": 8, "correct": true}
+      ]
+    },
+    {
+      "text": "4 x 3",
+      "responses": [
+        {"text": 12, "correct": true},
+        {"text": 4,"correct": false},
+        {"text": 8, "correct": false}
+      ]
+    },
+    {
+      "text": "4 x 4",
+      "responses": [
+        {"text": 10, "correct": false},
+        {"text": 12,"correct": false},
+        {"text": 16, "correct": true}
+      ]
+    },
+    {
+      "text": "4 x 5",
+      "responses": [
+        {"text": 14, "correct": false},
+        {"text": 20,"correct": true},
+        {"text": 18, "correct": false}
+      ]
+    },
+    {
+      "text": "4 x 6",
+      "responses": [
+        {"text": 22, "correct": false},
+        {"text": 24,"correct": true},
+        {"text": 26, "correct": false}
+      ]
+    },
+    {
+      "text": "4 x 7",
+      "responses": [
+        {"text": 28, "correct": true},
+        {"text": 18,"correct": false},
+        {"text": 22, "correct": false}
+      ]
+    },
+    {
+      "text": "4 x 8",
+      "responses": [
+        {"text": 28, "correct": false},
+        {"text": 30,"correct": false},
+        {"text": 32, "correct": true}
+      ]
+    },
+    {
+      "text": "4 x 9",
+      "responses": [
+        {"text": 36, "correct": true},
+        {"text": 34,"correct": false},
+        {"text": 29, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 0",
+      "responses": [
+        {"text": 0, "correct": true},
+        {"text": 5,"correct": false},
+        {"text": 6, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 1",
+      "responses": [
+        {"text": 1, "correct": false},
+        {"text": 5,"correct": true},
+        {"text": 10, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 2",
+      "responses": [
+        {"text": 10, "correct": true},
+        {"text": 5,"correct": false},
+        {"text": 8, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 3",
+      "responses": [
+        {"text": 32, "correct": false},
+        {"text": 15,"correct": true},
+        {"text": 12, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 4",
+      "responses": [
+        {"text": 20, "correct": true},
+        {"text": 45,"correct": false},
+        {"text": 15, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 5",
+      "responses": [
+        {"text": 26, "correct": false},
+        {"text": 25,"correct": true},
+        {"text": 20, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 6",
+      "responses": [
+        {"text": 25, "correct": false},
+        {"text": 65,"correct": false},
+        {"text": 30, "correct": true}
+      ]
+    },
+    {
+      "text": "5 x 7",
+      "responses": [
+        {"text": 35, "correct": true},
+        {"text": 30,"correct": false},
+        {"text": 57, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 8",
+      "responses": [
+        {"text": 30, "correct": false},
+        {"text": 40,"correct": true},
+        {"text": 32, "correct": false}
+      ]
+    },
+    {
+      "text": "5 x 9",
+      "responses": [
+        {"text": 55, "correct": false},
+        {"text": 45,"correct": true},
+        {"text": 50, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 0",
+      "responses": [
+        {"text": 5, "correct": false},
+        {"text": 0,"correct": true},
+        {"text": 6, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 1",
+      "responses": [
+        {"text": 6, "correct": true},
+        {"text": 7,"correct": false},
+        {"text": 12, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 2",
+      "responses": [
+        {"text": 10, "correct": false},
+        {"text": 12,"correct": true},
+        {"text": 26, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 3",
+      "responses": [
+        {"text": 16, "correct": false},
+        {"text": 20,"correct": false},
+        {"text": 18, "correct": true}
+      ]
+    },
+    {
+      "text": "6 x 4",
+      "responses": [
+        {"text": 24, "correct": true},
+        {"text": 20,"correct": false},
+        {"text": 18, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 5",
+      "responses": [
+        {"text": 25, "correct": false},
+        {"text": 30,"correct": true},
+        {"text": 35, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 6",
+      "responses": [
+        {"text": 66, "correct": false},
+        {"text": 33,"correct": false},
+        {"text": 36, "correct": true}
+      ]
+    },
+    {
+      "text": "6 x 7",
+      "responses": [
+        {"text": 42, "correct": true},
+        {"text": 38,"correct": false},
+        {"text": 67, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 8",
+      "responses": [
+        {"text": 40, "correct": false},
+        {"text": 48,"correct": true},
+        {"text": 38, "correct": false}
+      ]
+    },
+    {
+      "text": "6 x 9",
+      "responses": [
+        {"text": 54, "correct": true},
+        {"text": 45,"correct": false},
+        {"text": 55, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 0",
+      "responses": [
+        {"text": 7, "correct": false},
+        {"text": 0,"correct": true},
+        {"text": 6, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 1",
+      "responses": [
+        {"text": 7, "correct": true},
+        {"text": 12,"correct": false},
+        {"text": 6, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 2",
+      "responses": [
+        {"text": 12, "correct": false},
+        {"text": 14,"correct": true},
+        {"text": 26, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 3",
+      "responses": [
+        {"text": 18, "correct": false},
+        {"text": 16,"correct": false},
+        {"text": 21, "correct": true}
+      ]
+    },
+    {
+      "text": "7 x 4",
+      "responses": [
+        {"text": 28, "correct": true},
+        {"text": 18,"correct": false},
+        {"text": 24, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 5",
+      "responses": [
+        {"text": 35, "correct": true},
+        {"text": 25,"correct": false},
+        {"text": 30, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 6",
+      "responses": [
+        {"text": 33, "correct": false},
+        {"text": 42,"correct": true},
+        {"text": 66, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 7",
+      "responses": [
+        {"text": 42, "correct": false},
+        {"text": 28,"correct": false},
+        {"text": 49, "correct": true}
+      ]
+    },
+    {
+      "text": "7 x 8",
+      "responses": [
+        {"text": 56, "correct": true},
+        {"text": 48,"correct": false},
+        {"text": 52, "correct": false}
+      ]
+    },
+    {
+      "text": "7 x 9",
+      "responses": [
+        {"text": 63, "correct": true},
+        {"text": 54,"correct": false},
+        {"text": 79, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 0",
+      "responses": [
+        {"text": 4, "correct": false},
+        {"text": 0,"correct": true},
+        {"text": 2, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 0",
+      "responses": [
+        {"text": 6, "correct": false},
+        {"text": 0,"correct": true},
+        {"text": 8, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 1",
+      "responses": [
+        {"text": 8, "correct": true},
+        {"text": 12,"correct": false},
+        {"text": 7, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 2",
+      "responses": [
+        {"text": 14, "correct": false},
+        {"text": 16,"correct": true},
+        {"text": 12, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 3",
+      "responses": [
+        {"text": 16, "correct": false},
+        {"text": 18,"correct": false},
+        {"text": 24, "correct": true}
+      ]
+    },
+    {
+      "text": "8 x 4",
+      "responses": [
+        {"text": 32, "correct": true},
+        {"text": 24,"correct": false},
+        {"text": 28, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 5",
+      "responses": [
+        {"text": 25, "correct": false},
+        {"text": 40,"correct": true},
+        {"text": 35, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 6",
+      "responses": [
+        {"text": 42, "correct": false},
+        {"text": 66,"correct": false},
+        {"text": 48, "correct": true}
+      ]
+    },
+    {
+      "text": "8 x 7",
+      "responses": [
+        {"text": 56, "correct": true},
+        {"text": 38,"correct": false},
+        {"text": 42, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 8",
+      "responses": [
+        {"text": 64, "correct": true},
+        {"text": 56,"correct": false},
+        {"text": 68, "correct": false}
+      ]
+    },
+    {
+      "text": "8 x 9",
+      "responses": [
+        {"text": 88, "correct": false},
+        {"text": 72,"correct": true},
+        {"text": 80, "correct": false}
+      ]
+    },
+    {
+      "text": "9 x 0",
+      "responses": [
+        {"text": 9, "correct": false},
+        {"text": 0,"correct": false},
+        {"text": 6, "correct": true}
+      ]
+    },
+    {
+      "text": "9 x 1",
+      "responses": [
+        {"text": 9, "correct": true},
+        {"text": 7,"correct": false},
+        {"text": 12, "correct": false}
+      ]
+    },
+    {
+      "text": "9 x 2",
+      "responses": [
+        {"text": 14, "correct": false},
+        {"text": 18,"correct": true},
+        {"text": 16, "correct": false}
+      ]
+    },
+    {
+      "text": "9 x 3",
+      "responses": [
+        {"text": 16, "correct": false},
+        {"text": 24,"correct": false},
+        {"text": 27, "correct": true}
+      ]
+    },
+    {
+      "text": "9 x 4",
+      "responses": [
+        {"text": 36, "correct": true},
+        {"text": 24,"correct": false},
+        {"text": 32, "correct": false}
+      ]
+    },
+    {
+      "text": "9 x 5",
+      "responses": [
+        {"text": 25, "correct": false},
+        {"text": 45,"correct": true},
+        {"text": 35, "correct": false}
+      ]
+    },
+    {
+      "text": "9 x 6",
+      "responses": [
+        {"text": 66, "correct": false},
+        {"text": 54,"correct": true},
+        {"text": 42, "correct": false}
+      ]
+    },
+    {
+      "text": "9 x 7",
+      "responses": [
+        {"text": 63, "correct": true},
+        {"text": 42,"correct": false},
+        {"text": 38, "correct": false}
+      ]
+    },
+    {
+      "text": "9 x 8",
+      "responses": [
+        {"text": 68, "correct": false},
+        {"text": 64,"correct": false},
+        {"text": 72, "correct": true}
+      ]
+    },
+    {
+      "text": "9 x 9",
+      "responses": [
+        {"text": 72, "correct": false},
+        {"text": 81,"correct": true},
+        {"text": 88, "correct": false}
+      ]
     }
   ]
 }
