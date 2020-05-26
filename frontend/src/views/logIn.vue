@@ -29,7 +29,7 @@
                 if(this.username == this.username1 && this.password == this.password1){
                     this.$router.push({ name: 'createRoom' });
                 }
-                this.errorMessage = "password is spelled 1234 and username is spelled admin :D "
+                this.errorMessage = "password is 1234 and username is spelled admin :D "
             }
         }
     }
