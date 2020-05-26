@@ -53,7 +53,8 @@
             return {
                 //title: 'Mathtable One',
                 mathTables: json,  // json file
-                generatedQuestions: this.gamecode,
+                generatedQuestions:this.gamecode,
+                //this.gamecode,
                 chosenQuestion: 0, // index in our generated questions
                 nextQ: false, //värde som visar "true" om vi är redo till nästa fråga.
                 clicked: false //boolean som visar om vi klickat på ett av svaren
@@ -70,6 +71,11 @@
             clickAnswer: function(){
                 this.clicked = true; //vi har klickat på ett av svaren
                 this.nextQ = true;  //vi kan visa nextQuestion-knappen för att gå vidare till nästa fråga
+            }
+        },
+        watch:{
+            gamecode: function(){
+                this.generatedQuestions = this.gamecode
             }
         }
     }
