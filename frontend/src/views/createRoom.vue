@@ -10,9 +10,9 @@
                 <p>Choose a level of difficulty, number of questions and name your room. Please make sure your room name does not contain spaces.</p>
                 <!-- infotext -->
 
-               <button @click="selectNumberOfQuestions(5)">5</button>
-                <button @click="selectNumberOfQuestions(10)">10</button>
-                <button @click="selectNumberOfQuestions(15)">15</button>
+               <button @click="selectNumberOfQuestions(5)" v-bind:class="{green : selected3}" >5</button>
+                <button @click="selectNumberOfQuestions(10)" v-bind:class="{green : selected4}" >10</button>
+                <button @click="selectNumberOfQuestions(15)" v-bind:class="{green : selected5}" >15</button>
 
                 <!-- välj level och spara i variabel för att kunna skicka-->
                 <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> Easy </button>
@@ -47,6 +47,9 @@
                 selected0: false,
                 selected1: false,
                 selected2: false,
+                selected3: false,
+                selected4: false,
+                selected5: false,
                 responseText: "",
                 selectedNumberOfQuestions: 10,
                 active: false
@@ -57,20 +60,23 @@
                 if(this.active == false){
                     this.responseText = "Please select how many questions you want."
                 }
-                if(inputz === 1){
-                    this.selected0 = true;
-                    this.selected1 = false;
-                    this.selected2 = false;
-                }
-                if(inputz === 2){
-                    this.selected1 = true;
-                    this.selected0 = false;
-                    this.selected2 = false;
-                }
-                if(inputz === 3){
-                    this.selected2 = true;
-                    this.selected0 = false;
-                    this.selected1 = false;
+
+                switch(inputz) {
+                    case 1:
+                        this.selected0 = true;
+                        this.selected1 = false;
+                        this.selected2 = false;
+                        break;
+                    case 2:
+                        this.selected1 = true;
+                        this.selected0 = false;
+                        this.selected2 = false;
+                        break;
+                    case 3:
+                        this.selected2 = true;
+                        this.selected0 = false;
+                        this.selected1 = false;
+                        break;
                 }
 
                 var level = inputz;
@@ -154,6 +160,25 @@
             selectNumberOfQuestions: function(n){
                 this.active = true;
                 this.selectedNumberOfQuestions = n;
+
+                switch(n) {
+                    case 5:
+                        this.selected3 = true;
+                        this.selected4 = false;
+                        this.selected5 = false;
+                        break;
+                    case 10:
+                        this.selected3 = false;
+                        this.selected4 = true;
+                        this.selected5 = false;
+                        break;
+                    case 15:
+                        this.selected3 = false;
+                        this.selected4 = false;
+                        this.selected5 = true;
+                        break;
+                }
+
             }
 
         }
