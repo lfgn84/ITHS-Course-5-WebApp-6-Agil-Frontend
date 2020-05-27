@@ -2,7 +2,8 @@
    <div>
 
     <game-component :gamecode="hej" :level="userLevel" @count="counter" @right="ratt" v-show="play"></game-component>
-       Questions asnwered: {{x}}
+       Questions answered: {{x}}
+       Questions left: {{questionsLeft}}
       Score : {{score}}
    </div>
 </template>
@@ -30,6 +31,11 @@
             },
             ratt: function(value){
                 this.score += value
+            }
+        },
+        computed:{
+            questionsLeft: function(){
+                return this.hej.length - this.x
             }
         },
         created() {
