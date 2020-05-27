@@ -1,7 +1,9 @@
 <template>
    <div>
 
-    <game-component :gamecode="hej" :level="userLevel" v-show="play"></game-component>
+    <game-component :gamecode="hej" :level="userLevel" @count="counter" @right="ratt" v-show="play"></game-component>
+       Questions asnwered: {{x}}
+      Score : {{score}}
    </div>
 </template>
 
@@ -17,7 +19,17 @@
             return {
                 userLevel: "",
                 play: true,
-                hej: []
+                hej: [],
+                x: 0,
+                score:0
+            }
+        },
+        methods:{
+            counter: function(value){
+                this.x += value
+            },
+            ratt: function(value){
+                this.score += value
             }
         },
         created() {
