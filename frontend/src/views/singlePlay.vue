@@ -107,7 +107,10 @@ import gameComponent from "../components/gameComponent";
             </div>
         </div>
         </div>
-
+        <!-- show home link -->
+        <div v-show="play">
+        <router-link to="/">Home</router-link>
+        </div>
     <game-component :gamecode="info.gamecode" v-show="play"></game-component>
     </div>
 </template>
