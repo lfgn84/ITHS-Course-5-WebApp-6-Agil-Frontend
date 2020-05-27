@@ -1,5 +1,8 @@
 <template>
    <div>
+       <div id="nav">
+           <router-link to="/">Home</router-link>
+       </div>
 
     <game-component :gamecode="hej" :level="userLevel" @count="counter" @right="ratt" v-show="play"></game-component>
        Questions answered: {{x}}

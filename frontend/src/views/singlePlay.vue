@@ -59,6 +59,9 @@ import gameComponent from "../components/gameComponent";
     <div>
         <div id="gameOptions" v-show="!play">
         <div class="header">
+            <div id="nav">
+                <router-link to="/">Home</router-link>
+            </div>
             <h1>Single Play !</h1>
         </div>
         <div>
@@ -109,8 +112,6 @@ import gameComponent from "../components/gameComponent";
     </div>
 </template>
 <script>
-    // @ is an alias to /src
-    //import HelloWorld from '@/components/HelloWorld.vue'
     import footerComponent from "../components/footerComponent";
     import GameComponent from "../components/gameComponent";
     // import startPage from "../components/startPage";
@@ -118,7 +119,6 @@ import gameComponent from "../components/gameComponent";
         name: 'singlePlay',
         components: {
             GameComponent,
-            //HelloWorld
             footerComponent
         },
         data(){

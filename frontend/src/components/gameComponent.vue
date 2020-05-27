@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import json from "../assets/json/test.json"
+    import json from "../assets/json/mathTables.json"
     export default {
         name: "gameComponent",
         props: {

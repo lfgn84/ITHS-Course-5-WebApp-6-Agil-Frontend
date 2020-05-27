@@ -1,5 +1,8 @@
 <template>
+
+
     <div class = footerComponent>
+        <router-link to="/about">About</router-link>
         <p>Developed by MJLSR fall semester 2020 ITHS. School project in webb applications </p>
 
     </div>
