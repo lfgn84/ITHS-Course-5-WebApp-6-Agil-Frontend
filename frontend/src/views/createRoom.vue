@@ -7,21 +7,48 @@
             <!-- välj level, döp rum, skicka till databas. -->
             <footerComponent></footerComponent>
             <div>
-                <p>Choose a level of difficulty, number of questions and name your room. Please make sure your room name does not contain spaces.</p>
+
                 <!-- infotext -->
 
-               <button @click="selectNumberOfQuestions(5)" v-bind:class="{green : selected3}" >5</button>
+
+                <ul class="floatLeft">
+                    <li>
+                        <p>Select number of questions:</p>
+                    </li>
+               <li>
+                   <button @click="selectNumberOfQuestions(5)" v-bind:class="{green : selected3}" >5</button>
+               </li>
+                    <li>
                 <button @click="selectNumberOfQuestions(10)" v-bind:class="{green : selected4}" >10</button>
+                    </li>
+                    <li>
                 <button @click="selectNumberOfQuestions(15)" v-bind:class="{green : selected5}" >15</button>
+                    </li>
+                </ul>
 
                 <!-- välj level och spara i variabel för att kunna skicka-->
+                <ul class="floatLeft">
+                    <li>
+                        <p>Select level:</p>
+                    </li>
+                    <li>
                 <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> Easy </button>
+                    </li>
+                    <li>
                 <button @click="selectLevel(2)" v-bind:class="{green : selected1}"> Medium </button>
+                    </li>
+                    <li>
                 <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> Hard </button>
-                <input  type="text" v-model="info.room" placeholder="enter room code">
+                    </li>
+                    <li>
+                <input  type="text" v-model="info.room" placeholder="name your room to something">
+
                 <!--döp rum inga mellanslag! spara för att kunna skicka-->
                 <!-- submit-knapp som skickar till databasen-->
                 <button @click="sendInfo">create room!</button>
+                        <p>Please make sure your room name does not contain spaces.</p>
+                    </li>
+                </ul>
                 <p>{{responseText}}</p>
             </div>
         </div>
@@ -201,5 +228,9 @@
         font-family: 'Luckiest Guy', Tahoma;
         color: darkblue;
         font-size: 3em ;
+    }
+
+    .floatLeft {
+        float: left;
     }
 </style>
