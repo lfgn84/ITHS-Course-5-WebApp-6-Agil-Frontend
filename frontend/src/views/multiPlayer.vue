@@ -42,12 +42,16 @@
             submit: function () {
 
                 var nickName = this.nickname;
+                var roomName = this.room;
 
                 if (/\s/.test(nickName)) {
                     this.responseText = "No spaces in your nickname please"
                 } else if (!nickName) {
                     this.responseText = "You dont have a name?"
-                } else {
+                }
+                else if (!roomName){
+                    this.responseText = "You need to name the room you want to join"
+                }else {
                     this.responseText = ""
 
                     /*skapa spelare*/
