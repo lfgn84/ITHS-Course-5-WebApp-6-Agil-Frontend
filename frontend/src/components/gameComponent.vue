@@ -5,8 +5,9 @@
         <div v-text="level"></div>
         <div>
 
-            <!-- timer -->
-            <span class="timer">⌛ {{ timePassed | formatTimer }}</span>
+            <!--https://github.com/franktopel/vue-defuse/blob/master/src/components/VueDefuse.vue-->
+            <!-- timer format-timer ligger under data i filters och gör så att timePassed visas 00:00 ist för antal sekunder-->
+            <span class="timer" v-show="showTimer">⌛ {{ timePassed | formatTimer }}</span>
 
 
             <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
@@ -68,10 +69,12 @@
                 timeStarted: null, //todays date
                 timer: null,
                 showTotalTime: false,
-                totalTime: ""
+                totalTime: "",
+                showTimer: true
             }
         },
 
+        //https://github.com/franktopel/vue-defuse/blob/master/src/components/VueDefuse.vue
         filters: {
             formatTimer(seconds) {
                 let days, hrs, mins, secs, remainingSecs
@@ -106,11 +109,17 @@
                 this.nextQ = true;  //vi kan visa nextQuestion-knappen för att gå vidare till nästa fråga
                 }
                 else{
+                    //stoppar timer
                     this.stopTimer();
+                    //formatterar antal sekunder till minuter och sekunder
                     this.formatTotalTime();
+                    //döljer knappen nextQuestion
                     this.nextQ = false;
+                    //döljer den stannade timern
+                    this.showTimer = false;
+                    //visar totala tiden
                     this.showTotalTime = true;
-                    //här behöver vi visa en knapp show winner eller show your own result
+                    //här behöver vi visa en knapp show winner eller show your own result eller "start a new game"?
                 }
                 this.$emit('count', 1)
                 if(value == true){
@@ -119,6 +128,7 @@
                     this.$emit('wrong', 0)
                 }
             },
+            //startar timer, copy paste från https://github.com/franktopel/vue-defuse/blob/master/src/components/VueDefuse.vue
             startTimer () {
                 if (!this.timer) {
                     this.timeStarted = Date.now()
@@ -127,13 +137,14 @@
                     }, 1000)
                 }
             },
+
+            //stoppar timer, copy paste från https://github.com/franktopel/vue-defuse/blob/master/src/components/VueDefuse.vue
             stopTimer () {
                 clearInterval(this.timer)
                 this.timer = null
             },
 
             formatTotalTime(){
-
                 //räkna ut hur många minuter och sekunder timePassed är som i från början endast räknas i antal sekunder
                 var minutes = Math.floor(this.timePassed / 60);
                 var seconds = this.timePassed - minutes * 60;
@@ -187,6 +198,9 @@
         font-family: 'Luckiest Guy', Tahoma;
         color: darkblue;
         font-size: 3em ;
+    }
+    .timer {
+        font-size: 1.5em;
     }
 </style>
 
