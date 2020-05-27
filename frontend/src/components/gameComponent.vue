@@ -70,7 +70,14 @@
             //när vi klickat på ett av svaren sätts clicked och nextQ till true
             clickAnswer: function(){
                 this.clicked = true; //vi har klickat på ett av svaren
+                //om vi är på sista frågan så sätts nextQuestion till false
+                if(this.generatedQuestions.length > this.chosenQuestion+1){
                 this.nextQ = true;  //vi kan visa nextQuestion-knappen för att gå vidare till nästa fråga
+                }
+                else{
+                    this.nextQ = false;
+                    //här behöver vi visa en knapp show winner eller show your own result
+                }
             }
         },
         watch:{
