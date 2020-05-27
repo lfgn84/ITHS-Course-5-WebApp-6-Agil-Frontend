@@ -5,6 +5,10 @@
         <div v-text="level"></div>
         <div>
 
+            <!-- timer -->
+            <span class="timer">⌛ {{ timePassed | formatTimer }}</span>
+
+
             <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
             <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>
 
@@ -32,6 +36,8 @@
 
             <button v-show="nextQ" @click="nextQuestion">NEXT QUESTION</button> <!--[next question button visas när "nextQ" värde är "true". Denna knappen gör "reset" på alla våran värde i data som hjälper oss att dela rätta svar från fel]-->
 
+            <p v-show="showTotalTime">Your total time: {{totalTime}}</p>
+
         </div>
     </div>
 
@@ -57,7 +63,31 @@
                 //this.gamecode,
                 chosenQuestion: 0, // index in our generated questions
                 nextQ: false, //värde som visar "true" om vi är redo till nästa fråga.
-                clicked: false //boolean som visar om vi klickat på ett av svaren
+                clicked: false, //boolean som visar om vi klickat på ett av svaren
+                timePassed: 0,
+                timeStarted: null, //todays date
+                timer: null,
+                showTotalTime: false,
+                totalTime: ""
+            }
+        },
+
+        filters: {
+            formatTimer(seconds) {
+                let days, hrs, mins, secs, remainingSecs
+                days = ('0' + Math.floor(seconds / (24 * 60 * 60))).substr(-2)
+                remainingSecs = seconds - days * (24 * 60 * 60)
+                hrs = ('0' + Math.floor(remainingSecs / (60 * 60))).substr(-2)
+                remainingSecs = seconds - hrs * (60 * 60)
+                mins = ('0' + Math.floor(remainingSecs / 60)).substr(-2)
+                secs = ('0' + remainingSecs % 60).substr(-2)
+                return (days !== '00' ? `${days}:${hrs}:${mins}:${secs}` : (hrs !== '00' ? `${hrs}:${mins}:${secs}` : (mins.charAt(0) !== '0' ? `${mins}:${secs}` : `${mins.charAt(1)}:${secs}`)))
+                // use this if all you wanna see is seconds filled up with zeros
+                // if (seconds.toString().length < 4) {
+                //   return ('0000' + seconds).substr(-4)
+                // } else {
+                //   return seconds
+                // }
             }
         },
 
@@ -69,13 +99,17 @@
 
             //när vi klickat på ett av svaren sätts clicked och nextQ till true
             clickAnswer: function(value){
+                this.startTimer();
                 this.clicked = true; //vi har klickat på ett av svaren
                 //om vi är på sista frågan så sätts nextQuestion till false
                 if(this.generatedQuestions.length > this.chosenQuestion+1){
                 this.nextQ = true;  //vi kan visa nextQuestion-knappen för att gå vidare till nästa fråga
                 }
                 else{
+                    this.stopTimer();
+                    this.formatTotalTime();
                     this.nextQ = false;
+                    this.showTotalTime = true;
                     //här behöver vi visa en knapp show winner eller show your own result
                 }
                 this.$emit('count', 1)
@@ -84,7 +118,32 @@
                 }else if (value == false){
                     this.$emit('wrong', 0)
                 }
+            },
+            startTimer () {
+                if (!this.timer) {
+                    this.timeStarted = Date.now()
+                    this.timer = setInterval(() => {
+                        this.timePassed = Math.round((Date.now() - this.timeStarted) / 1000)
+                    }, 1000)
+                }
+            },
+            stopTimer () {
+                clearInterval(this.timer)
+                this.timer = null
+            },
+
+            formatTotalTime(){
+
+                //räkna ut hur många minuter och sekunder timePassed är som i från början endast räknas i antal sekunder
+                var minutes = Math.floor(this.timePassed / 60);
+                var seconds = this.timePassed - minutes * 60;
+
+                //formattera minutes och seconds till läsbart 00:00-format
+                this.totalTime = ('0' + minutes).substr(-2)
+                    + ":"
+                    + ('0' + seconds).substr(-2);
             }
+
         },
         watch:{
             gamecode: function(){
