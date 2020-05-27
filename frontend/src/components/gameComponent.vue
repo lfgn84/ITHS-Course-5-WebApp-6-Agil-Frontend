@@ -12,19 +12,19 @@
             <!-- svaret får class red om clicked = true && correct-värdet inte är true (alltså false) -->
             <!-- svaret får class green om clicked = true && correct-värdet är true -->
             <!-- Knappens text är värdet i responses[0].text -->
-            <button id="0" @click="clickAnswer()"
+            <button id="0" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct)"
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct,
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct}"
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].text}}
             </button>
 
-            <button id="1" @click="clickAnswer()"
+            <button id="1" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct)"
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct,
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct}"
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].text}}
             </button>
 
-            <button id="2" @click="clickAnswer()"
+            <button id="2" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct)"
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct,
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct}"
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].text}}
@@ -68,7 +68,7 @@
             },
 
             //när vi klickat på ett av svaren sätts clicked och nextQ till true
-            clickAnswer: function(){
+            clickAnswer: function(value){
                 this.clicked = true; //vi har klickat på ett av svaren
                 //om vi är på sista frågan så sätts nextQuestion till false
                 if(this.generatedQuestions.length > this.chosenQuestion+1){
@@ -77,6 +77,12 @@
                 else{
                     this.nextQ = false;
                     //här behöver vi visa en knapp show winner eller show your own result
+                }
+                this.$emit('count', 1)
+                if(value == true){
+                    this.$emit('right', 1)
+                }else if (value == false){
+                    this.$emit('wrong', 0)
                 }
             }
         },
