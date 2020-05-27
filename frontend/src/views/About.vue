@@ -1,6 +1,10 @@
 <template>
 
+
   <div class="about">
+      <div id="nav">
+      <router-link to="/">Home</router-link>
+      </div>
 
     <div class="title">About us who developed this quiz for learning and education</div>
 
@@ -36,7 +40,7 @@
 
 
 
-<script>
+<script >
 
   export default {
     name: "About",
@@ -68,7 +72,7 @@
 
   .title {
 
-    text-decoration: underline;
+    text-decoration: -moz-default-background-color;
 
     grid-row: 1;
 

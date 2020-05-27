@@ -2,32 +2,6 @@
   <div class="home" id="home">
     <headComponent> </headComponent>
 
-    <!-- Document Header Starts
-    // HEAD (menu)
-  -------------------------------------------------
-    APPEN allt innehåll
-
-    (if true)
-    // Start sida       komponent
-
-    (if true)
-    // log in       komponent
-
-    (if true)
-    // single page        komponent
-
-    (if true)
-    // barn       komponent
-
-    (if true)
-    // lärare       komponent
-
-    (if true)
-    // game!           komponent
-
-    -----------------------------------------------
-    // footer komponent
-    -->
     <startPage id="start"></startPage>
     <footerComponent></footerComponent>
 
@@ -35,15 +9,12 @@
 </template>
 
 <script>
-// @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
 import footerComponent from "../components/footerComponent";
 import headComponent from "../components/headComponent";
 import startPage from "../components/startPage";
 export default {
   name: 'Home',
   components: {
-    //HelloWorld
     footerComponent,
     headComponent,
     startPage

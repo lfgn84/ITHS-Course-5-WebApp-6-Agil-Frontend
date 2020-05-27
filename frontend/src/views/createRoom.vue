@@ -1,6 +1,9 @@
 <template>
     <div>
         <div class="header">
+            <div id="nav">
+                <router-link to="/">Home</router-link>
+            </div>
             <h1>Create Room</h1>
         </div>
         <div>
@@ -55,8 +58,6 @@
     </div>
 </template>
 <script>
-    // @ is an alias to /src
-    //import HelloWorld from '@/components/HelloWorld.vue'
     import footerComponent from "../components/footerComponent";
     // import startPage from "../components/startPage";
     export default {

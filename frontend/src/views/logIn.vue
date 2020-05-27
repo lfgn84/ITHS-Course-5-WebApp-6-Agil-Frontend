@@ -1,5 +1,9 @@
 <template>
     <div>
+
+        <div id="nav">
+            <router-link to="/">Home</router-link>
+        </div>
         <p>Username</p>
         <input type="text" v-model="username1" placeholder="Enter username">
         <p>Password</p>
