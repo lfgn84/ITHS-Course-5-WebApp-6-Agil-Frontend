@@ -24,9 +24,7 @@
 
         </ul>
 
-
-
-
+        <p> Total no visitors: {{numberOfVisitors}}</p>
 
     </div>
 </template>
@@ -36,8 +34,29 @@
         name: "startPage",
         data(){
             return{
-                inputRoom: ""
+                inputRoom: "",
+                numberOfVisitors: 0
             }
+        },
+        methods: {
+            pingDatabase: function () {
+                fetch("https://fierce-mountain-27289.herokuapp.com/v1/ping", {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        this.numberOfVisitors = data.counter;
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            },
+        },
+        mounted() {
+            this.pingDatabase();
         }
 
     }
