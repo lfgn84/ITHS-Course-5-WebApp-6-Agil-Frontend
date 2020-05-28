@@ -10,9 +10,10 @@
        Score : {{score}}
 
 
-      <div v-show="questionsLeft < 1">
+      <div v-show="questionsLeft < 1" @click="submitInfo">
             <router-link
-               :to="{name: 'winner', params:{nickname: nickname, room : room, score : score, time: time} }"  tag="button" > Show result
+               :to="{name: 'winner', params:{nickname: nickname, room : room, score : score, time: time} }"
+               tag="button" > Show result
             </router-link>
       </div>
 
@@ -50,7 +51,31 @@
             },
             setTime: function (value) {
                 this.time = value;
+            },
+            submitInfo: function(){
+                //skickar spelarens resultat till databasen
+                fetch('https://fierce-mountain-27289.herokuapp.com/v1/playerresult',{
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "room":this.room,
+                        "nickname":this.nickname,
+                        "correctanswers": this.score,
+                        "totaltime": this.time
+                    }),
+
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
             }
+
         },
         computed:{
             questionsLeft: function(){
