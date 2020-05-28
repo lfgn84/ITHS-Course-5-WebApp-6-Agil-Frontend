@@ -102,7 +102,7 @@
 
             //när vi klickat på ett av svaren sätts clicked och nextQ till true
             clickAnswer: function(value){
-                this.startTimer();
+                // this.startTimer();
                 this.clicked = true; //vi har klickat på ett av svaren
                 //om vi är på sista frågan så sätts nextQuestion till false
                 if(this.generatedQuestions.length > this.chosenQuestion+1){
@@ -160,6 +160,9 @@
             gamecode: function(){
                 this.generatedQuestions = this.gamecode
             }
+        },
+        mounted() {
+            this.startTimer();
         }
     }
 </script>
