@@ -6,6 +6,7 @@ import createRoom from "../views/createRoom";
 import logIn from "../views/logIn";
 import multiPlayer from "../views/multiPlayer";
 import multiPlay from "../views/multiPlay";
+import winner from "../views/winner";
 
 Vue.use(VueRouter)
 
@@ -47,6 +48,11 @@ Vue.use(VueRouter)
       path:'/multiPlay',
       name:'multiPlay',
       component: multiPlay
+    },
+    {
+      path:'/winner',
+      name:'winner',
+      component: winner
     }
 ]
 

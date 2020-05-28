@@ -4,11 +4,9 @@
     <div>
         <div v-text="level"></div>
         <div>
-
             <!--https://github.com/franktopel/vue-defuse/blob/master/src/components/VueDefuse.vue-->
             <!-- timer format-timer ligger under data i filters och gör så att timePassed visas 00:00 ist för antal sekunder-->
             <span class="timer" v-show="showTimer">⌛ {{ timePassed | formatTimer }}</span>
-
 
             <!--[ Utvalda frågor som listas med ..questions[generatedQuestion[chosenQuestion]]     ] -->
             <div id="question">{{mathTables.questions[generatedQuestions[chosenQuestion]].text}}</div>
@@ -121,7 +119,9 @@
                     this.showTimer = false;
                     //visar totala tiden
                     this.showTotalTime = true;
-                    //här behöver vi visa en knapp show winner eller show your own result eller "start a new game"?
+
+                    //skicka tid till multiplay via emit till multiplay
+                    this.$emit("totalTime", this.timePassed)
                 }
                 this.$emit('count', 1)
                 if(value == true){

@@ -3,12 +3,22 @@
        <div id="nav">
            <router-link to="/">Home</router-link>
        </div>
-
-    <game-component :gamecode="hej" :level="userLevel" @count="counter" @right="ratt" v-show="play"></game-component>
+    <!-- totalTime, count och right skickas från gamecomponent via emit-->
+    <game-component :gamecode="gamecode" :level="userLevel" @totalTime="setTime" @count="counter" @right="ratt" v-show="play"></game-component>
        Questions answered: {{x}}
        Questions left: {{questionsLeft}}
-      Score : {{score}}
+       Score : {{score}}
+
+
+      <div v-show="questionsLeft < 1">
+            <router-link
+               :to="{name: 'winner', params:{nickname: nickname, room : room, score : score, time: time} }"  tag="button" > Show result
+            </router-link>
+      </div>
+
    </div>
+
+
 </template>
 
 <script>
@@ -23,9 +33,12 @@
             return {
                 userLevel: "",
                 play: true,
-                hej: [],
+                gamecode: [],
                 x: 0,
-                score:0
+                score:0,
+                nickname: "",
+                room: "",
+                time: 0
             }
         },
         methods:{
@@ -34,15 +47,20 @@
             },
             ratt: function(value){
                 this.score += value
+            },
+            setTime: function (value) {
+                this.time = value;
             }
         },
         computed:{
             questionsLeft: function(){
-                return this.hej.length - this.x
+                return this.gamecode.length - this.x
             }
         },
         created() {
-            this.hej = this.$route.params.gc;
+            this.gamecode = this.$route.params.gc;
+            this.nickname = this.$route.params.nickname;
+            this.room = this.$route.params.room;
         }
     }
 

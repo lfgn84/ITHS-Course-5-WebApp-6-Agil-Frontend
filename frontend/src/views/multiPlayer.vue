@@ -24,7 +24,7 @@
     <p>Welcome to room {{room}} {{nickname}}</p>
     <p>You will answer {{gamecode.length}} questions</p>
        <router-link
-               :to="{name: 'multiPlay', params:{gc : gamecode} }" class="startButton" tag="button" > Start!
+               :to="{name: 'multiPlay', params:{gc : gamecode, nickname : nickname, room : room} }" class="startButton" tag="button" > Start!
        </router-link>
 
    </div>
