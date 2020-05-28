@@ -98,10 +98,12 @@
             nextQuestion: function(){
                 this.chosenQuestion ++ // vi går upp en index plats i "generatedQuestions"
                 this.clicked = false //nollställer att vi har klickat på ett av svaren när nästa fråga visas
+                this.nextQ = false;
             },
 
             //när vi klickat på ett av svaren sätts clicked och nextQ till true
             clickAnswer: function(value){
+                this.nextQ = true;
                 // this.startTimer();
                 this.clicked = true; //vi har klickat på ett av svaren
                 //om vi är på sista frågan så sätts nextQuestion till false

@@ -24,7 +24,7 @@
 
         </ul>
 
-        <p> Total no visitors: {{numberOfVisitors}}</p>
+        <p class="counter"> Total no visitors: {{numberOfVisitors}}</p>
 
     </div>
 </template>
@@ -92,6 +92,10 @@
         font-family: 'Luckiest Guy', Tahoma;
         color: darkblue;
         font-size: 3em ;
+    }
+    .counter{
+        font-size: 16px;
+        color: #2c3e50;
     }
 
 </style>
