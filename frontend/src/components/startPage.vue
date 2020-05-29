@@ -1,9 +1,9 @@
 <template>
-    <div class = "frame">
 
+    <div class = "body">
 
-        <p> info how to play </p>
         <ul>
+
             <li>
                 <router-link
                         to="/singlePlay" class="startButton" tag="button"> Single play
@@ -23,10 +23,9 @@
                 </router-link> </li>
 
         </ul>
-
-        <p class="counter"> Total no visitors: {{numberOfVisitors}}</p>
-
+        <p class="counter"> Total visitors: {{numberOfVisitors}} </p>
     </div>
+
 </template>
 
 <script>
@@ -58,44 +57,54 @@
         mounted() {
             this.pingDatabase();
         }
-
     }
 </script>
 
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
-    p{
+
+    p {
         padding-top: 20px;
         width: 1400px;
         text-align: -moz-center;
         margin-bottom: -20px;
         font-family: 'Luckiest Guy', Tahoma;
-        font-size:4em;
-        color: #f53b3b;
+        font-size: 4em;
+        color: #fffefd;
     }
-    ul{
+
+
+    ul {
         display: inline-flex;
         list-style-type: none;
     }
-    li{
+
+    li {
         margin: 100px 150px 150px 150px;
     }
-    .startButton{
-        border-radius: 50px ;
-        height: 100px ;
-        width: 100px ;
+
+    .startButton {
+        height: 150px;
+        width: 150px;
         background-color: #93D2FA;
-        border-bottom-color: #1C75AD ;
-        border-bottom-width:5px ;
-        border-right-width: 5px;
-        border-right-color: #1C75AD ;
+        border-bottom-color: #44a0ad;
         font-family: 'Luckiest Guy', Tahoma;
-        color: darkblue;
-        font-size: 3em ;
+        color: #480080;
+        font-size: 30px;
+        display: block;
+        position: relative;
     }
-    .counter{
-        font-size: 16px;
-        color: #2c3e50;
+
+    .counter {
+        font-size: 30px;
+        color: #480080;
+    }
+
+    .body {
+        padding: 150px;
+        background: lightblue url("../../public/hungryForMath.bmp.png");
+        background-clip: padding-box;
+        width: 155%;
     }
 
 </style>
