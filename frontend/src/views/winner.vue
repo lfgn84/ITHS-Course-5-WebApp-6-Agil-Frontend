@@ -12,7 +12,7 @@
             Loading results from all players...
         </div>
 
-        <div>
+        <div v-show="showResult">
 
             <table style="width:50%">
                 <tr>
@@ -63,7 +63,8 @@
             room: "",
             time: 0,
             loading : true,
-            playerArray: []
+            playerArray: [],
+            showResult: false
         }
     },
     created() {
@@ -75,8 +76,8 @@
 
     },
         mounted() {
-          //hämta winnertable med room i requestbody
-
+            //hämta winnertable med room i requestbody
+do{
             var url = new URL('https://fierce-mountain-27289.herokuapp.com/v1/winner')
             var params = {room: this.room}
             url.search = new URLSearchParams(params).toString()
@@ -91,11 +92,15 @@
                 .then(response => response.json())
                 .then(data => {
                     this.playerArray = data.results
-                    this.loading = false;
+                    this.loading = true;
                 })
                 .catch((error) => {
                     console.error('Error:', error);
                 });
+        }
+            while(playerArray[playerArray.length-1].correctanswers)
+            this.loading = false;
+this.showResult = true;
 
         },
 
