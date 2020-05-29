@@ -98,7 +98,7 @@ do{
                     console.error('Error:', error);
                 });
         }
-            while(playerArray[playerArray.length-1].correctanswers)
+            while(this.playerArray[this.playerArray.length-1].correctanswers)
             this.loading = false;
 this.showResult = true;
 
