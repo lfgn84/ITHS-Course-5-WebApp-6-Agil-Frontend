@@ -43,6 +43,7 @@
 
         </div>
 
+        <button @click="test"></button>
 
     </div>
 </template>
@@ -64,7 +65,8 @@
             time: 0,
             loading : true,
             playerArray: [],
-            showResult: false
+            showResult: false,
+            checkMinusOne: -1
         }
     },
     created() {
@@ -73,52 +75,74 @@
         this.room = this.$route.params.room;
         this.score = this.$route.params.score;
         this.time = this.$route.params.time;
-
     },
-        mounted() {
-            //hämta winnertable med room i requestbody
-do{
-            var url = new URL('https://fierce-mountain-27289.herokuapp.com/v1/winner')
-            var params = {room: this.room}
-            url.search = new URLSearchParams(params).toString()
-
-
-            fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    this.playerArray = data.results
-                    this.loading = true;
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        }
-            while(this.playerArray[this.playerArray.length-1].correctanswers)
-            this.loading = false;
-this.showResult = true;
-
+        mounted: function () {
+            this.checkIfFinished();
         },
+            methods: {
+                formatTotalTime()
+                {
+                    //räkna ut hur många minuter och sekunder timePassed är som i från början endast räknas i antal sekunder
+                    var minutes = Math.floor(this.timePassed / 60);
+                    var seconds = this.timePassed - minutes * 60;
 
-        methods: {
-            formatTotalTime(){
-                //räkna ut hur många minuter och sekunder timePassed är som i från början endast räknas i antal sekunder
-                var minutes = Math.floor(this.timePassed / 60);
-                var seconds = this.timePassed - minutes * 60;
+                    //formattera minutes och seconds till läsbart 00:00-format
+                    this.totalTime = ('0' + minutes).substr(-2)
+                        + ":"
+                        + ('0' + seconds).substr(-2);
+                }
+            ,
+                checkWinners()
+                {
+                        var url = new URL('https://fierce-mountain-27289.herokuapp.com/v1/winner')
+                        var params = {room: this.room}
+                        url.search = new URLSearchParams(params).toString()
 
-                //formattera minutes och seconds till läsbart 00:00-format
-                this.totalTime = ('0' + minutes).substr(-2)
-                    + ":"
-                    + ('0' + seconds).substr(-2);
+
+                        fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                this.playerArray = data.results
+                                this.loading = true;
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+
+                        this.loading = false;
+                        this.showResult = true;
+                },
+                checkIfFinished(){
+
+
+                    var url = new URL('https://fierce-mountain-27289.herokuapp.com/v1/checkdone')
+                    var params = {room: this.room}
+                    url.search = new URLSearchParams(params).toString()
+
+
+                    fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            this.checkMinusOne = data.results
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+
+
+                    this.checkWinners()
+                }
             }
-
-
-
-        }
     }
 </script>
 
