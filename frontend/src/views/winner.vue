@@ -115,10 +115,11 @@
                             });
 
                         this.loading = false;
-                        this.showResult = true;
+
                 },
                 checkIfFinished(){
-
+                    console.log("chek")
+                    this.showResult = true;
 
                     var url = new URL('https://fierce-mountain-27289.herokuapp.com/v1/checkdone')
                     var params = {room: this.room}
