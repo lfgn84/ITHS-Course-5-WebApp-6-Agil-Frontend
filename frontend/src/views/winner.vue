@@ -121,6 +121,7 @@
                     console.log("chek")
                     this.showResult = true;
 
+                    // loop för att se när check minus inte blir minus -1
                     var url = new URL('https://fierce-mountain-27289.herokuapp.com/v1/checkdone')
                     var params = {room: this.room}
                     url.search = new URLSearchParams(params).toString()
@@ -134,13 +135,14 @@
                     })
                         .then(response => response.json())
                         .then(data => {
-                            this.checkMinusOne = data.results
+                            this.checkMinusOne = data
                         })
                         .catch((error) => {
                             console.error('Error:', error);
                         });
+                    console.log(this.checkMinusOne)
 
-
+                    // loop slut
                     this.checkWinners()
                 }
             }
