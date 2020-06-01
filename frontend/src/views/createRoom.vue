@@ -1,21 +1,27 @@
 <template>
-    <div>
-        <div class="header">
-            <div id="nav">
-                <router-link to="/">Home</router-link>
-            </div>
-            <h1>Create Room</h1>
-        </div>
+
+    <div class="header1">
+        <nav class="nav">
+            <router-link to="/">Home</router-link>
+        </nav>
+
+        <h1>To create a room please choose number of questions and level</h1>
+
+        <div>
+
+    <div class="body">
+
+
         <div>
             <!-- välj level, döp rum, skicka till databas. -->
-            <footerComponent></footerComponent>
+            
             <div>
 
                 <!-- infotext -->
 
-
+<div class="button2">
                 <ul class="floatLeft">
-                    <li>
+                    <li class="text1">
                         <p>Select number of questions:</p>
                     </li>
                <li>
@@ -31,7 +37,7 @@
 
                 <!-- välj level och spara i variabel för att kunna skicka-->
                 <ul class="floatLeft">
-                    <li>
+                    <li class="text2">
                         <p>Select level:</p>
                     </li>
                     <li>
@@ -52,19 +58,21 @@
                         <p>Please make sure your room name does not contain spaces.</p>
                     </li>
                 </ul>
+
                 <p>{{responseText}}</p>
+</div>
             </div>
         </div>
     </div>
+            </div>
+    </div>
 </template>
+
 <script>
-    import footerComponent from "../components/footerComponent";
-    // import startPage from "../components/startPage";
     export default {
         name: 'createRoom',
         components: {
-            //HelloWorld
-            footerComponent
+
         },
         data(){
             return{
@@ -213,25 +221,60 @@
     }
 </script>
 <style>
+
+    .header1{
+        font-family: 'Luckiest Guy', Tahoma;
+        text-align: center;
+        position: fixed;
+        background-color: #87d8ff;
+        width: 100%;
+        color: #480080;
+        line-height:1.42857143;
+        min-width:500px;
+        font-size: 20px;
+    }
+    .body{
+        padding: 345px;
+        background: lightblue url("../../public/login1.png");
+        width: 64%;
+    }
+
     .green
     {
         background-color: green;
     }
-    button{
-        border-radius: 50px ;
-        height: 100px ;
-        width: 100px ;
+    .button2{
+        height: 60px;
+        width: 200px;
+        margin-left: 100px;
+        margin-top: 25px;
         background-color: #93D2FA;
-        border-bottom-color: #1C75AD ;
-        border-bottom-width:5px ;
-        border-right-width: 5px;
-        border-right-color: #1C75AD ;
+        border-bottom-color: #44a0ad;
         font-family: 'Luckiest Guy', Tahoma;
-        color: darkblue;
-        font-size: 3em ;
+        color: #480080;
+        font-size: 30px;
+        display: ruby-base;
+        position: relative;
+        cursor: pointer;
     }
 
+    .text1{
+        font-size: 25px;
+        margin-top: -350px;
+        background-color: #480080;
+        color: #f6faee;
+
+    }
+
+    .text2{
+        font-size: 25px;
+        margin-top: -350px;
+        background-color: #480080;
+        color: #f6faee;
+
+    }
     .floatLeft {
         float: left;
+        font-size: 10px;
     }
 </style>
