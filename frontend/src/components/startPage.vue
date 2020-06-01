@@ -17,10 +17,11 @@
 
             </li>
 
-            <li>
+            <li class="login">
                 <router-link
                         to="/logIn" class="startButton" tag="button"> Login
-                </router-link> </li>
+                </router-link>
+            </li>
 
         </ul>
         <p class="counter"> Total visitors: {{numberOfVisitors}} </p>
@@ -93,6 +94,7 @@
         font-size: 30px;
         display: block;
         position: relative;
+        cursor: pointer;
     }
 
     .counter {
