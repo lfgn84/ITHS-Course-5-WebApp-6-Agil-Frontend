@@ -51,7 +51,7 @@
 
     .body {
         padding: 250px;
-        background: lightblue url("../../public/login1.png");
+        background : lightblue url("../../public/login1.png");
         width: 70%;
     }
 
