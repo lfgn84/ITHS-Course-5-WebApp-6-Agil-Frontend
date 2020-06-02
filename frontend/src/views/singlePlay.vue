@@ -111,7 +111,11 @@ import gameComponent from "../components/gameComponent";
         <div v-show="play">
         <router-link to="/">Home</router-link>
         </div>
-    <game-component :gamecode="info.gamecode" v-show="play"></game-component>
+    <game-component :gamecode="info.gamecode" v-show="play" @right="ratt" @count="count" :reset="reset"></game-component>
+      Your score :  {{score}} points
+        count :{{counter}}
+        <button v-show="finishedGame" @click="reseting">RESTART </button> <button v-show="finishedGame">HOME</button>
+
     </div>
 </template>
 <script>
@@ -138,7 +142,11 @@ import gameComponent from "../components/gameComponent";
                 responseText: "",
                 selectedNumberOfQuestions: 10,
                 active: false,
-                play:false
+                play:false,
+                score: 0,
+                counter: 0,
+                finishedGame : false,
+                reset: false
             }
         },
         methods: {
@@ -193,6 +201,26 @@ import gameComponent from "../components/gameComponent";
                 }
                 this.play = true
             },
+            ratt: function(value){
+                this.score += value
+            },
+            count: function(value){
+                this.counter += value
+            },
+            reseting: function(){
+                this.play = false;
+                this.score = 0;
+                this.counter = 0;
+                this.selected0= false;
+                    this.selected1= false;
+                    this.selected2= false;
+                    this.selected3= false;
+                    this.selected4= false;
+                    this.selected5= false;
+                    this.reset = true;
+                    this.finishedGame = false;
+
+            },
             sendInfo: function() {
 
                 var gamecode = this.info.gamecode;
@@ -211,6 +239,7 @@ import gameComponent from "../components/gameComponent";
                         this.selected3 = true;
                         this.selected4 = false;
                         this.selected5 = false;
+
                         break;
                     case 10:
                         this.selected3 = false;
@@ -226,6 +255,13 @@ import gameComponent from "../components/gameComponent";
 
             }
 
+        },
+        watch:{
+            counter: function(){
+               if(this.counter == this.selectedNumberOfQuestions){
+                   this.finishedGame = true
+    }
+            }
         }
     }
 </script>

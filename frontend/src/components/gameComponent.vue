@@ -15,19 +15,19 @@
             <!-- svaret får class red om clicked = true && correct-värdet inte är true (alltså false) -->
             <!-- svaret får class green om clicked = true && correct-värdet är true -->
             <!-- Knappens text är värdet i responses[0].text -->
-            <button id="0" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct)"
+            <button id="0" :disabled="isDisabled" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct)"
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct,
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].correct}"
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[0].text}}
             </button>
 
-            <button id="1" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct)"
+            <button id="1" :disabled="isDisabled" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct)"
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct,
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].correct}"
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[1].text}}
             </button>
 
-            <button id="2" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct)"
+            <button id="2" :disabled="isDisabled" @click="clickAnswer(mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct)"
                     v-bind:class="{'red': clicked && !mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct,
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct}"
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].text}}
@@ -51,7 +51,8 @@
         name: "gameComponent",
         props: {
             level: Number, //Prop level, ge oss spel "level" som man väljer från "singlePlayer"
-            gamecode: Array
+            gamecode: Array,
+            reset: Boolean
         },
 
         data() {
@@ -68,7 +69,8 @@
                 timer: null,
                 showTotalTime: false,
                 totalTime: "",
-                showTimer: true
+                showTimer: true,
+                isDisabled: false
             }
         },
 
@@ -97,6 +99,7 @@
                 this.chosenQuestion ++ // vi går upp en index plats i "generatedQuestions"
                 this.clicked = false //nollställer att vi har klickat på ett av svaren när nästa fråga visas
                 this.nextQ = false;
+                this.isDisabled = false
             },
 
             //när vi klickat på ett av svaren sätts clicked och nextQ till true
@@ -126,9 +129,8 @@
                 this.$emit('count', 1)
                 if(value == true){
                     this.$emit('right', 1)
-                }else if (value == false){
-                    this.$emit('wrong', 0)
                 }
+                this.isDisabled = true
             },
             //startar timer, copy paste från https://github.com/franktopel/vue-defuse/blob/master/src/components/VueDefuse.vue
             startTimer () {
@@ -161,6 +163,18 @@
         watch:{
             gamecode: function(){
                 this.generatedQuestions = this.gamecode
+            },
+            reset: function(){
+                this.chosenQuestion = 0; // index in our generated questions
+                    this.nextQ =false; //värde som visar "true" om vi är redo till nästa fråga.
+                    this.clicked = false; //boolean som visar om vi klickat på ett av svaren
+                    this.timePassed= 0;
+                    this.timeStarted= null; //todays date
+                    this.timer= null;
+                    this.showTotalTime= false;
+                    this.totalTime= "";
+                    this.showTimer= true;
+                    this.isDisabled= false;
             }
         },
         mounted() {

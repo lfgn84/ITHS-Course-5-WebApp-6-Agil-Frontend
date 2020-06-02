@@ -27,7 +27,7 @@
     export default {
         name: "multiPlay",
         props:{
-            passedCodes: Array
+            passedCodes: Array,
         },
         components: {gameComponent},
         data() {
