@@ -1,62 +1,5 @@
-<!--
 <template>
-<div>
-    <div class="header">
-        <h1>Single Player</h1>
-    </div>
-    <div>Choose difficulty level :
-        <button @click="level1">1</button>
-        <button @click="level2">2</button>
-        <button @click="level3">3</button>
-    </div>
-
-
-<game-component :level="userLevel" v-show="play"></game-component>
-</div>
-</template>
-
-<script>
-import gameComponent from "../components/gameComponent";
-    export default {
-        name: "singlePlay",
-        components: {gameComponent},
-        data(){
-            return{
-                userLevel: "",
-                play: false
-
-
-
-
-            }
-        },
-        methods:{
-
-        }
-
-
-}
-</script>
-
-<style scoped>
-
-    @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
-
-    .header {
-        font-family: 'Luckiest Guy', Tahoma,serif;
-        width: 100%;
-        color: #f8fff9;
-        text-align: center;
-        background: #2e3af5;
-        font-size: 30px;
-        margin-left: -10px;
-    }
-
-
-
-</style>-->
-<template>
-    <div>
+    <div id="singlePlay">
         <div id="gameOptions" v-show="!play">
         <div class="header">
             <div id="nav">
@@ -111,7 +54,11 @@ import gameComponent from "../components/gameComponent";
         <div v-show="play">
         <router-link to="/">Home</router-link>
         </div>
-    <game-component :gamecode="info.gamecode" v-show="play"></game-component>
+    <game-component :gamecode="info.gamecode" v-show="play" @right="ratt" @count="count" :reset="reset"></game-component>
+      Your score :  {{score}} points
+        count :{{counter}}
+        <button v-show="finishedGame" @click="reseting">RESTART </button> <button v-show="finishedGame">HOME</button>
+
     </div>
 </template>
 <script>
@@ -138,7 +85,11 @@ import gameComponent from "../components/gameComponent";
                 responseText: "",
                 selectedNumberOfQuestions: 10,
                 active: false,
-                play:false
+                play:false,
+                score: 0,
+                counter: 0,
+                finishedGame : false,
+                reset: false
             }
         },
         methods: {
@@ -193,6 +144,26 @@ import gameComponent from "../components/gameComponent";
                 }
                 this.play = true
             },
+            ratt: function(value){
+                this.score += value
+            },
+            count: function(value){
+                this.counter += value
+            },
+            reseting: function(){
+                this.play = false;
+                this.score = 0;
+                this.counter = 0;
+                this.selected0= false;
+                    this.selected1= false;
+                    this.selected2= false;
+                    this.selected3= false;
+                    this.selected4= false;
+                    this.selected5= false;
+                    this.reset = true;
+                    this.finishedGame = false;
+
+            },
             sendInfo: function() {
 
                 var gamecode = this.info.gamecode;
@@ -211,6 +182,7 @@ import gameComponent from "../components/gameComponent";
                         this.selected3 = true;
                         this.selected4 = false;
                         this.selected5 = false;
+
                         break;
                     case 10:
                         this.selected3 = false;
@@ -226,10 +198,23 @@ import gameComponent from "../components/gameComponent";
 
             }
 
+        },
+        watch:{
+            counter: function(){
+               if(this.counter == this.selectedNumberOfQuestions){
+                   this.finishedGame = true
+    }
+            }
         }
     }
 </script>
 <style>
+    #singlePlay{
+        background-image: url("../../public/math.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 1000px;
+    }
     .green
     {
         background-color: green;
