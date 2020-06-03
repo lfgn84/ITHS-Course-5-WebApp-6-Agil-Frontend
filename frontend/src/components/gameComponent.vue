@@ -50,7 +50,6 @@
     export default {
         name: "gameComponent",
         props: {
-            level: Number, //Prop level, ge oss spel "level" som man väljer från "singlePlayer"
             gamecode: Array,
             reset: Boolean
         },
@@ -122,6 +121,7 @@
                     this.showTimer = false;
                     //visar totala tiden
                     this.showTotalTime = true;
+                    this.clicked = false;
 
                     //skicka tid till multiplay via emit till multiplay
                     this.$emit("totalTime", this.timePassed)
@@ -165,6 +165,7 @@
                 this.generatedQuestions = this.gamecode
             },
             reset: function(){
+                if(this.reset == true){
                 this.chosenQuestion = 0; // index in our generated questions
                     this.nextQ =false; //värde som visar "true" om vi är redo till nästa fråga.
                     this.clicked = false; //boolean som visar om vi klickat på ett av svaren
@@ -175,6 +176,7 @@
                     this.totalTime= "";
                     this.showTimer= true;
                     this.isDisabled= false;
+                }
             }
         },
         mounted() {

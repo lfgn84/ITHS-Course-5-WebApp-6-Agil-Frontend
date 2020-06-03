@@ -1,9 +1,12 @@
 <template>
 
     <div>
-        <div id="nav">
-            <router-link to="/">Home</router-link>
-        </div>
+    <div id="nav">
+        <router-link to="/">Home</router-link>
+    </div>
+
+    <div id ="winner">
+
         <p> winner view</p>
 
         <div>
@@ -48,6 +51,7 @@
 
         </div>
 
+    </div>
     </div>
 </template>
 
@@ -146,5 +150,13 @@
 </script>
 
 <style scoped>
-
+#winner{
+    background-image: url("../../public/all-winners.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 1200px;
+    font-family: 'Luckiest Guy', Tahoma;
+    font-size: 40px;
+    color: ivory;
+}
 </style>

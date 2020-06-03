@@ -57,7 +57,7 @@
     <game-component :gamecode="info.gamecode" v-show="play" @right="ratt" @count="count" :reset="reset"></game-component>
       Your score :  {{score}} points
         count :{{counter}}
-        <button v-show="finishedGame" @click="reseting">RESTART </button> <button v-show="finishedGame">HOME</button>
+<button v-show="finishedGame" @click="reseting">RESTART </button> <button v-show="finishedGame"><router-link to="/">Home</router-link></button>
 
     </div>
 </template>
@@ -143,6 +143,7 @@
                     this.info.gamecode = gameCodeArray
                 }
                 this.play = true
+                this.reset = false
             },
             ratt: function(value){
                 this.score += value

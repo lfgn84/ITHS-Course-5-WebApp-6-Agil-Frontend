@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div id="multiplay">
        <div id="nav">
            <router-link to="/">Home</router-link>
        </div>
@@ -92,5 +92,10 @@
 </script>
 
 <style scoped>
-
+#multiplay{
+    background-image: url("../../public/numbers.jpg");
+    height: 900px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
 </style>
