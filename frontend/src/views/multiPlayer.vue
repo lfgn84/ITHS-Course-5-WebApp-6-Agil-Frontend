@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div id="multiplayer">
        <div id="nav">
            <router-link to="/">Home</router-link>
        </div>
@@ -120,5 +120,15 @@
 </script>
 
 <style scoped>
+#multiplayer{
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-image: url("../../public/kids.jpg");
+    background-size: 100%;
+}
+    button{
+        cursor: pointer;
+
+    }
 
 </style>
