@@ -76,7 +76,15 @@
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log('Success:', data);
+
+                            if(data.info == "Nickname already exists") {
+                                this.responseText = data.info
+                                this.loading = false
+                            }
+                            if(data.info == "Room not found") {
+                                this.responseText = data.info
+                                this.loading = false
+                            }
                         })
                         .catch((error) => {
                             console.error('Error:', error);
@@ -109,6 +117,7 @@
                         })
                         .catch((error) => {
                             console.error('Error:', error);
+
                         });
 
 
