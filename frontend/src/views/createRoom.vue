@@ -9,63 +9,69 @@
 
         <div>
 
-    <div class="body">
+            <div class="body">
 
 
-        <div>
-            <!-- välj level, döp rum, skicka till databas. -->
-            
-            <div>
+                <div>
+                    <!-- välj level, döp rum, skicka till databas. -->
 
-                <!-- infotext -->
+                    <div>
 
-<div class="button2">
-                <ul class="floatLeft">
-                    <li class="text1">
-                        <p>Select number of questions:</p>
-                    </li>
-               <li>
-                   <button @click="selectNumberOfQuestions(5)" v-bind:class="{green : selected3}" >5</button>
-               </li>
-                    <li>
-                <button @click="selectNumberOfQuestions(10)" v-bind:class="{green : selected4}" >10</button>
-                    </li>
-                    <li>
-                <button @click="selectNumberOfQuestions(15)" v-bind:class="{green : selected5}" >15</button>
-                    </li>
-                </ul>
+                        <!-- infotext -->
 
-                <!-- välj level och spara i variabel för att kunna skicka-->
-                <ul class="floatLeft">
-                    <li class="text2">
-                        <p>Select level:</p>
-                    </li>
-                    <li>
-                <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> Easy </button>
-                    </li>
-                    <li>
-                <button @click="selectLevel(2)" v-bind:class="{green : selected1}"> Medium </button>
-                    </li>
-                    <li>
-                <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> Hard </button>
-                    </li>
-                    <li>
-                <input  type="text" v-model="info.room" placeholder="name your room to something">
 
-                <!--döp rum inga mellanslag! spara för att kunna skicka-->
-                <!-- submit-knapp som skickar till databasen-->
-                <button @click="sendInfo">create room!</button>
-                        <p>Please make sure your room name does not contain spaces.</p>
-                    </li>
-                </ul>
 
-                <p>{{responseText}}</p>
-</div>
+                        <div class="q2">
+                            <p>Select number of questions:</p>
+
+                            <div class="button2">
+
+                                <button @click="selectNumberOfQuestions(5)" v-bind:class="{green : selected3}" >5</button>
+
+
+                                <button @click="selectNumberOfQuestions(10)" v-bind:class="{green : selected4}" >10</button>
+
+
+                                <button @click="selectNumberOfQuestions(15)" v-bind:class="{green : selected5}" >15</button>
+
+                            </div>
+
+
+                            <!-- välj level och spara i variabel för att kunna skicka-->
+
+
+                            <p>Select level:</p>
+
+                            <div class="button2">
+
+                                <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> Easy </button>
+
+
+                                <button @click="selectLevel(2)" v-bind:class="{green : selected1}"> Medium </button>
+
+
+                                <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> Hard </button>
+
+                            </div>
+                        </div>
+                        <div class="input1">
+                            <input  type="text" v-model="info.room" placeholder="Name your room here">
+
+                            <!--döp rum inga mellanslag! spara för att kunna skicka-->
+                            <!-- submit-knapp som skickar till databasen-->
+                            <button @click="sendInfo">create room!</button>
+
+                        </div>
+
+                        <div class="text1">
+                            <p>{{responseText}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-            </div>
-    </div>
+
 </template>
 
 <script>
@@ -173,26 +179,26 @@
 
                     console.log(room + " = room in else not white space")
 
-                this.responseText = "Room created with name " + room + ". Everything is set to play hungry for math!" ;
+                    this.responseText = "Room created with name " + room + ". Everything is set to play hungry for math!" ;
 
-                fetch('https://fierce-mountain-27289.herokuapp.com/v1/creategame',{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({"room":room, "gamecode":gamecode}),
-                    // info är ett element som vi postar body
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Success:', data);
+                    fetch('https://fierce-mountain-27289.herokuapp.com/v1/creategame',{
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({"room":room, "gamecode":gamecode}),
+                        // info är ett element som vi postar body
                     })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-                console.log( JSON.stringify({"room":room, "gamecode":gamecode}))
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    console.log( JSON.stringify({"room":room, "gamecode":gamecode}))
                 }
-                },
+            },
             selectNumberOfQuestions: function(n){
                 this.active = true;
                 this.selectedNumberOfQuestions = n;
@@ -233,48 +239,54 @@
         min-width:500px;
         font-size: 20px;
     }
+
     .body{
         padding: 345px;
         background: lightblue url("../../public/login1.png");
         width: 64%;
     }
 
-    .green
-    {
-        background-color: green;
-    }
+
     .button2{
         height: 60px;
         width: 200px;
-        margin-left: 100px;
+        margin-left: -20px;
         margin-top: 25px;
         background-color: #93D2FA;
         border-bottom-color: #44a0ad;
         font-family: 'Luckiest Guy', Tahoma;
         color: #480080;
-        font-size: 30px;
+        font-size: 10px;
         display: ruby-base;
         position: relative;
         cursor: pointer;
     }
 
+    .q2{
+        font-size: 25px;
+        margin-top: -370px;
+        background: lightblue url("../../public/login1.png");
+        color: #480080;
+
+
+    }
+    .input1{
+        display: -webkit-box;
+        margin-top: 10px;
+        padding: 5px 30px 50px 350px;
+
+
+
+    }
+
     .text1{
-        font-size: 25px;
-        margin-top: -350px;
-        background-color: #480080;
         color: #f6faee;
-
-    }
-
-    .text2{
-        font-size: 25px;
-        margin-top: -350px;
         background-color: #480080;
-        color: #f6faee;
+    }
 
+    .green
+    {
+        background-color: green;
     }
-    .floatLeft {
-        float: left;
-        font-size: 10px;
-    }
+
 </style>
