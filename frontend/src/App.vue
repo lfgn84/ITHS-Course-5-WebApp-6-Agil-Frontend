@@ -14,7 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: #ffe4c4;
 }
 
 #nav {
@@ -29,13 +28,4 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-
-</style>
-
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: bisque;
-  }
 </style>
