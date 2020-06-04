@@ -109,4 +109,13 @@
         width: 155%;
     }
 
+    @media (max-width: 700px) {
+        .media {
+            flex-direction: column;
+        }
+    }
+
+
+
+
 </style>

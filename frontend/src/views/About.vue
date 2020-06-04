@@ -1,12 +1,14 @@
 <template>
 
+       <div>
+           <router-link to="/">Home</router-link>
     <div class="about">
         <head-component></head-component>
         <AboutComponent></AboutComponent>
         <footer-component></footer-component>
 
     </div>
-
+       </div>
 </template>
 
 <script >
@@ -14,12 +16,11 @@
 
     import AboutComponent from "../components/aboutComponent";
     import HeadComponent from "../components/headComponent";
-    import FooterComponent from "../components/footerComponent";
+
 
     export default {
         name: "About",
         components: {
-            FooterComponent,
             HeadComponent,
             AboutComponent
         }

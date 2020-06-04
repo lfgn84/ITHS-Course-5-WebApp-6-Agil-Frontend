@@ -24,7 +24,6 @@
                         <div class="q2">
                             <p>Select number of questions:</p>
 
-                            <div class="button2">
 
                                 <button @click="selectNumberOfQuestions(5)" v-bind:class="{green : selected3}" >5</button>
 
@@ -34,16 +33,17 @@
 
                                 <button @click="selectNumberOfQuestions(15)" v-bind:class="{green : selected5}" >15</button>
 
-                            </div>
+
+
 
 
                             <!-- välj level och spara i variabel för att kunna skicka-->
 
 
-                            <p>Select level:</p>
 
-                            <div class="button2">
 
+
+                                <p>Select level:</p>
                                 <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> Easy </button>
 
 
@@ -52,7 +52,7 @@
 
                                 <button @click="selectLevel(3)" v-bind:class="{green : selected2}"> Hard </button>
 
-                            </div>
+
                         </div>
                         <div class="input1">
                             <input  type="text" v-model="info.room" placeholder="Name your room here">
@@ -247,11 +247,26 @@
     }
 
 
+    .button1{
+        height: 100px;
+        width: 0px;
+        margin-left: 400px;
+
+        background-color: #93D2FA;
+        border-bottom-color: #44a0ad;
+        font-family: 'Luckiest Guy', Tahoma;
+        color: #480080;
+        font-size: 10px;
+
+
+        cursor: pointer;
+    }
+
     .button2{
         height: 60px;
         width: 200px;
-        margin-left: -20px;
-        margin-top: 25px;
+        margin-left: 400px;
+        margin-top: 250px;
         background-color: #93D2FA;
         border-bottom-color: #44a0ad;
         font-family: 'Luckiest Guy', Tahoma;
@@ -263,9 +278,8 @@
     }
 
     .q2{
-        font-size: 25px;
+        font-size: 75%;
         margin-top: -370px;
-        background: lightblue url("../../public/login1.png");
         color: #480080;
 
 
