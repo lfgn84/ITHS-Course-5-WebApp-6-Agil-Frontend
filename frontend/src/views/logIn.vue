@@ -4,7 +4,7 @@
             <router-link to="/">Home</router-link>
         </nav>
 
-        <h1>Please enter your username and password to login1</h1>
+        <h1>Please enter your username and password to login</h1>
 
 
 <div>
