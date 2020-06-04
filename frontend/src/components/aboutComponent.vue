@@ -1,6 +1,6 @@
 <template>
 
-    <div class="headerComponent">
+    <div class="aboutComponent">
         <br>
         <h1>About hungry for math</h1>
 
@@ -32,14 +32,16 @@
     }
 </script>
 
-<style scoped>
+<style>
     @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
 
-    .headerComponent {
+
+
+    .aboutComponent {
         font-family: 'Luckiest Guy', Tahoma;
         text-align: center;
         position: absolute;
-        background: bisque;
+        background: #ffe4c4;
         width: 100%;
         color: #1C75AD;
         line-height:1.42857143;

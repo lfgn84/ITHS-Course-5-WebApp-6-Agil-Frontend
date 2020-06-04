@@ -1,32 +1,35 @@
 <template>
 
-
   <div class="about">
-
+    <head-component></head-component>
+    <AboutComponent></AboutComponent>
+    <footer-component></footer-component>
 
   </div>
 
 </template>
 
-
-
-
-
 <script >
 
+
   import AboutComponent from "../components/aboutComponent";
+  import HeadComponent from "../components/headComponent";
+  import FooterComponent from "../components/footerComponent";
 
   export default {
     name: "About",
     components: {
-      AboutComponent,
+      FooterComponent,
+      HeadComponent,
+      AboutComponent
     }
   }
 
 </script>
 
 
-<style scoped>
+<style>
+
 
   .about{
 
@@ -35,7 +38,6 @@
     grid-template-columns: repeat(1, auto);
 
     grid-template-rows: repeat(3, auto);
-
 
     justify-content: center;
 
