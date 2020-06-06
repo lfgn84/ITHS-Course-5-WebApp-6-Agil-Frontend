@@ -1,19 +1,23 @@
 <template>
    <div id="multiplay">
-       <div id="nav">
+       <div v-show="questionsLeft < 1" id="nav" v-bind:style="'font-size: 32px'">
            <router-link to="/">Home</router-link>
        </div>
     <!-- totalTime, count och right skickas från gamecomponent via emit-->
     <game-component :gamecode="gamecode" :level="userLevel" @totalTime="setTime" @count="counter" @right="ratt" v-show="play"></game-component>
+       <div id ="score" v-bind:style="'background-color: yellow'">
        Questions answered: {{x}}
+           <div class="divider"/>
        Questions left: {{questionsLeft}}
+           <div class="divider"/>
        Score : {{score}}
+       </div>
 
 
       <div v-show="questionsLeft < 1" @click="submitInfo">
             <router-link
                :to="{name: 'winner', params:{nickname: nickname, room : room, score : score, time: time} }"
-               tag="button" > Show result
+               tag="button" > Show results
             </router-link>
       </div>
 
@@ -97,5 +101,15 @@
     height: 900px;
     background-repeat: no-repeat;
     background-size: 100%;
+    font-family: 'Luckiest Guy', Tahoma;
+}
+.divider{
+    width:100px;
+    height:auto;
+    display:inline-block;
+}
+#score{
+    font-size: 38px;
+    color: black;
 }
 </style>
