@@ -18,10 +18,11 @@
     .footerComponent {
         position: fixed;
         left: 0;
-        bottom: 0;
+        bottom: -10px;
         width: 100%;
 
         color: #000000;
         text-align: center;
     }
+
 </style>

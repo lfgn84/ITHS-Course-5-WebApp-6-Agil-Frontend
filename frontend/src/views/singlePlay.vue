@@ -2,22 +2,20 @@
     <div id="singlePlay">
         <div id="gameOptions" v-show="!play">
         <div class="header">
-            <div id="nav">
+            <div id="nav" v-bind:style="'font-size: 35px'">
                 <router-link to="/">Home</router-link>
             </div>
             <h1>Single Play !</h1>
         </div>
         <div>
             <!-- välj level, döp rum, skicka till databas. -->
-            <footerComponent></footerComponent>
             <div>
 
                 <!-- infotext -->
 
-
                 <ul class="floatLeft">
                     <li>
-                        <p>Select number of questions:</p>
+                        <p><tab v-bind:style="'background-color: yellow'">Select number of questions:</tab></p>
                     </li>
                     <li>
                         <button @click="selectNumberOfQuestions(5)" v-bind:class="{green : selected3}" >5</button>
@@ -33,7 +31,7 @@
                 <!-- välj level och spara i variabel för att kunna skicka-->
                 <ul class="floatLeft">
                     <li>
-                        <p>Select level:</p>
+                        <p><tab v-bind:style="'background-color: yellow'">Select level:</tab></p>
                     </li>
                     <li>
                         <button @click="selectLevel(1)" v-bind:class="{green : selected0}"> Easy </button>
@@ -46,7 +44,7 @@
                     </li>
 
                 </ul>
-                <p>{{responseText}}</p>
+
             </div>
         </div>
         </div>
@@ -55,9 +53,13 @@
         <router-link to="/">Home</router-link>
         </div>
     <game-component :gamecode="info.gamecode" v-show="play" @right="ratt" @count="count" :reset="reset"></game-component>
-      Your score :  {{score}} points
-        count :{{counter}}
-<button v-show="finishedGame" @click="reseting">RESTART </button> <button v-show="finishedGame"><router-link to="/">Home</router-link></button>
+        <div id="score" v-show="play" v-bind:style="'background-color: yellow'">
+      Your score :  {{score}}
+            <div class="divider"/>
+        Questions answered :{{counter}}
+        </div>
+<button v-show="finishedGame" @click="reseting">RESTART </button> <div class="divider"/> <button v-show="finishedGame"><router-link to="/">Home</router-link></button>
+        <footerComponent></footerComponent>
 
     </div>
 </template>
@@ -82,7 +84,6 @@
                 selected3: false,
                 selected4: false,
                 selected5: false,
-                responseText: "",
                 selectedNumberOfQuestions: 10,
                 active: false,
                 play:false,
@@ -214,7 +215,13 @@
         background-image: url("../../public/math.png");
         background-repeat: no-repeat;
         background-size: 100%;
-        height: 1000px;
+        height: 1200px;
+        font-family: 'Luckiest Guy', Tahoma;
+        font-size: 20px;
+    }
+    ul{
+        list-style-type: none;
+
     }
     .green
     {
@@ -230,8 +237,29 @@
         border-right-width: 5px;
         border-right-color: #1C75AD ;
         font-family: 'Luckiest Guy', Tahoma;
-        color: darkblue;
+        color: black;
+
         font-size: 3em ;
+    }
+    tab{
+        font-size: 40px;
+        position:relative;
+        bottom:50px;
+        color: black;
+
+    }
+    h1{
+        color: orangered;
+        font-size: 80px;
+    }
+    .divider{
+        width:300px;
+        height:auto;
+        display:inline-block;
+    }
+    #score{
+        font-size: 38px;
+        color: black;
     }
 
     .floatLeft {

@@ -32,10 +32,17 @@
                                    'green': clicked && mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].correct}"
                     >{{mathTables.questions[generatedQuestions[chosenQuestion]].responses[2].text}}
             </button>
-
+            <div  id="correct" v-show="correct != 0">
+            <div v-if="correct === 1" v-bind:class="{'green': true}">
+                CORRECT ANSWER !
+            </div>
+            <div v-else-if="correct === 2" v-bind:class="{'red': true}">
+                WRONG ANSWER
+            </div>
+            </div>
             <button v-show="nextQ" @click="nextQuestion">NEXT QUESTION</button> <!--[next question button visas när "nextQ" värde är "true". Denna knappen gör "reset" på alla våran värde i data som hjälper oss att dela rätta svar från fel]-->
 
-            <p v-show="showTotalTime">Your total time: {{totalTime}}</p>
+            <p id="totalTime" v-show="showTotalTime" v-bind:style="'background-color: beige'">Your total time: {{totalTime}}</p>
 
         </div>
     </div>
@@ -69,6 +76,7 @@
                 showTotalTime: false,
                 totalTime: "",
                 showTimer: true,
+                correct:0,
                 isDisabled: false
             }
         },
@@ -99,6 +107,7 @@
                 this.clicked = false //nollställer att vi har klickat på ett av svaren när nästa fråga visas
                 this.nextQ = false;
                 this.isDisabled = false
+                this.correct = 0
             },
 
             //när vi klickat på ett av svaren sätts clicked och nextQ till true
@@ -129,6 +138,9 @@
                 this.$emit('count', 1)
                 if(value == true){
                     this.$emit('right', 1)
+                    this.correct = 1
+                }else if (value == false){
+                    this.correct = 2
                 }
                 this.isDisabled = true
             },
@@ -223,6 +235,14 @@
     .timer {
         font-size: 1.5em;
     }
+    #correct{
+        font-size: 50px;
+        color: white;
+    }
+    #totalTime{
+        font-size: 40px;
+    }
+
 </style>
 
 

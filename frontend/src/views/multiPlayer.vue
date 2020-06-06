@@ -1,10 +1,10 @@
 <template>
    <div id="multiplayer">
-       <div id="nav">
+       <div v-bind:style="'font-size: 50px'"  id="nav">
            <router-link to="/">Home</router-link>
        </div>
 
-    <p>Enter room code and a nickname</p>
+    <p v-bind:style="'font-size: 50px'">Enter room code and a nickname</p>
 
        <!-- skriv in rumskod -->
        <!-- Göra om till form?-->
@@ -19,7 +19,7 @@
        </div>
 
 
-       <div id="roomInfo" v-show="showRoomInfo">
+       <div id="roomInfo" v-bind:style="'font-size: 30px'" v-show="showRoomInfo">
 
     <p>Welcome to room {{room}} {{nickname}}</p>
     <p>You will answer {{gamecode.length}} questions</p>
@@ -120,6 +120,7 @@
     background-repeat: no-repeat;
     background-image: url("../../public/kids.jpg");
     background-size: 100%;
+    font-family: 'Luckiest Guy', Tahoma;
 }
     button{
         cursor: pointer;
