@@ -11,11 +11,11 @@
 
         <li> This is a school project that covers Webapplictions and Agile Methods.</li>
 
-        This project focuses on SCRUM, Vue.cli, node.js with an postgress database.<br><br>
+        This project focuses on SCRUM, Vue.cli, node.js with a postgress database.<br><br>
 
         Team-members (link to Github):
 
-        <div><a href="https://github.com/lfgn84" target="_blank">Luis Guiteraez</a></div>
+        <div><a href="https://github.com/lfgn84" target="_blank">Luis Gutierrez</a></div>
 
         <div><a href="https://github.com/SebastianWaltilla" target="_blank">Sebastian Waltilla</a></div>
 

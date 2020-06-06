@@ -60,6 +60,9 @@
                             <!--döp rum inga mellanslag! spara för att kunna skicka-->
                             <!-- submit-knapp som skickar till databasen-->
                             <button @click="sendInfo">create room!</button>
+                            <p id="createdRoom" v-show="roomMessage"> Room "{{createdRoom}}"  was created.
+                                <button @click="roomMessage = false">Ok</button>
+                            </p>
 
                         </div>
 
@@ -94,7 +97,9 @@
                 selected5: false,
                 responseText: "",
                 selectedNumberOfQuestions: 10,
-                active: false
+                active: false,
+                createdRoom: "",
+                roomMessage: false,
             }
         },
         methods: {
@@ -197,7 +202,25 @@
                             console.error('Error:', error);
                         });
                     console.log( JSON.stringify({"room":room, "gamecode":gamecode}))
+                    this.createdRoom = room;
+
                 }
+                this.roomMessage = true;
+                this.reset();
+
+            },
+            reset: function(){
+                    this.info.room="";
+                    this.gamecode = "";
+                    this.selected0 = false;
+                    this.selected1= false;
+                    this.selected2= false;
+                    this.selected3= false;
+                    this.selected4= false;
+                    this.selected5= false;
+                    this.responseText= "";
+                    this.selectedNumberOfQuestions = 10;
+                    this.active = false;
             },
             selectNumberOfQuestions: function(n){
                 this.active = true;
@@ -244,6 +267,12 @@
         padding: 345px;
         background: lightblue url("../../public/login1.png");
         width: 64%;
+
+
+    }
+    #createdRoom{
+        font-size: 20px;
+        color: black;
     }
 
 
@@ -288,6 +317,7 @@
         display: -webkit-box;
         margin-top: 10px;
         padding: 5px 30px 50px 350px;
+        font-size: 10px;
 
 
 

@@ -1,7 +1,9 @@
 <template>
 
        <div>
-           <router-link to="/">Home</router-link>
+           <div id="router">
+           <router-link to="/" >Home</router-link>
+           </div>
     <div class="about">
         <head-component></head-component>
         <AboutComponent></AboutComponent>
@@ -60,6 +62,10 @@
 
 
 
+    }
+    #router{
+        font-family: 'Luckiest Guy', Tahoma;
+        font-size: 20px;
     }
 
 
