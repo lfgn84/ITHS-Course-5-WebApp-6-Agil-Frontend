@@ -12,7 +12,7 @@
             <li>
 
                 <router-link
-                        to="/multiPlayer" class="startButton" tag="button"> Join multiplayer game
+                        to="/playerLogin" class="startButton" tag="button"> Join multiplayer game
                 </router-link>
 
             </li>

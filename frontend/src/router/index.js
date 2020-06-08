@@ -7,6 +7,7 @@ import logIn from "../views/logIn";
 import multiPlayer from "../views/multiPlayer";
 import multiPlay from "../views/multiPlay";
 import winner from "../views/winner";
+import playerLogin from "../views/playerLogin";
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,11 @@ Vue.use(VueRouter)
       path:'/multiPlayer',
       name:'multiPlayer',
       component: multiPlayer
+    },
+    {
+      path:'/playerLogin',
+      name:'playerLogin',
+      component: playerLogin
     },
     {
       path:'/multiPlay',
